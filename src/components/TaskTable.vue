@@ -1,37 +1,34 @@
 <template>
   <table>
     <tr>
-      <th>Status</th>
+      <th class="centering">Status</th>
       <th>Category</th>
       <th>Task Name</th>
       <th>Time Limit</th>
-      <th>Remaining</th>
+      <th class="rightAlign">Remaining</th>
       <th></th>
     </tr>
-    <tr v-for="todo in todos" :key="todo.id">
-      <td class="centering">
-        <input type="checkbox" name="completed">
-        {{todo.priority}}
-      </td>
-      <td>{{todo.category}}</td>
-      <td>{{todo.title}}</td>
-      <td>{{todo.limit}}</td>
-      <td>{{todo.id}} Days</td>
-      <td class="centering">
-        <button>Edit</button>
-        <button @click="$emit('delete-todo', todo.id)">X</button>
-      </td>
-    </tr>
+    <Tr v-for="todo in todos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo"/>
   </table>
 </template>
 
 <script>
+import Tr from "./Tr";
+
 export default {
   name: "TaskTable",
   props: {
     todos: {
       type: Array,
       default: () => []
+    }
+  },
+  components: {
+    Tr
+  },
+  methods: {
+    deleteTodo(id) {
+      this.$emit("delete-todo", id);
     }
   }
 };
@@ -48,22 +45,19 @@ th {
   color: white;
   font-weight: normal;
   border-right: 1px solid rgb(221, 221, 221);
-  padding: 5px 0;
+  padding: 5px 2px;
 }
-td {
-  border: 1px solid rgb(221, 221, 221);
-  padding: 2px 0;
-}
+
 tr:nth-child(even) {
   background-color: rgb(245, 235, 252);
 }
 tr:hover {
   background-color: rgb(230, 208, 235) !important;
 }
-button:hover {
-  background-color: rgb(220, 193, 255);
-}
 .centering {
   text-align: center;
+}
+.rightAlign {
+  text-align: right;
 }
 </style>
