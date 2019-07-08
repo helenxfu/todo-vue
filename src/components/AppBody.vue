@@ -1,9 +1,9 @@
 <template>
   <div class="bodyContainer">
-    <Header/>
-    <AddNewTask :newId="lastItem" @add-todo="transferAdd"/>
-    <EmptyTask v-if="todos.length === 0"/>
-    <TaskTable v-else :todos="todos" @delete-todo="transferData"/>
+    <Header />
+    <AddNewTask :newId="lastItem" @add-todo="transferAdd" />
+    <EmptyTask v-if="todos.length === 0" />
+    <TaskTable v-else @delete-todo="transferData" />
   </div>
 </template>
 
@@ -50,6 +50,6 @@ export default {
 <style scoped>
 .bodyContainer {
   padding: 30px;
-  background-color: rgb(254, 255, 219);
+  background-color: rgb(254, 250, 255);
 }
 </style>

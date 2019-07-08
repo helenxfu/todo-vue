@@ -1,28 +1,25 @@
 <template>
   <table>
     <tr>
-      <th class="centering">Status</th>
-      <th>Category</th>
-      <th>Task Name</th>
-      <th>Time Limit</th>
-      <th class="rightAlign">Remaining</th>
+      <th class="centering">{{ $t('table.status') }}</th>
+      <th>{{ $t('table.titleCategory') }}</th>
+      <th>{{ $t('table.titleName') }}</th>
+      <th>{{ $t('table.titleLimit') }}</th>
+      <th class="rightAlign">{{ $t('table.titleRemain') }}</th>
       <th></th>
     </tr>
-    <Tr v-for="todo in todos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo"/>
+    <Tr v-for="todo in todos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo" />
   </table>
 </template>
 
 <script>
 import Tr from "./Tr";
 
+import { mapState } from "vuex";
+
 export default {
   name: "TaskTable",
-  props: {
-    todos: {
-      type: Array,
-      default: () => []
-    }
-  },
+  computed: mapState(["todos"]),
   components: {
     Tr
   },

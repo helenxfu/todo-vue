@@ -4,36 +4,36 @@
     <h2>Task Tracker</h2>
     <div class="status">
       <h3>
-        Tast Count
+        {{ $t('status.tableCount') }}
         <span>{{todos.length}}</span>
       </h3>
       <h3>
-        Remaining
+        {{ $t('status.tableRemain') }}
         <span>{{todos.length - todoCompleted}}</span>
       </h3>
       <h3>
-        Overdue
+        {{ $t('status.tableOverdue') }}
         <span :class="{warning : overdue > 0}">{{overdue}}</span>
       </h3>
       <h3>
-        Completed
+        {{ $t('status.tableComp') }}
         <span>{{todoCompleted}}</span>
       </h3>
       <h3>
-        Completion Rate
+        {{ $t('status.tableRate') }}
         <span>{{completionRate}}</span>
       </h3>
     </div>
-    <h4>Tasks</h4>
-    <button @click="$emit('delete-completed')">Delete Completed</button>
-    <button @click="$emit('delete-all')">Delete All</button>
+    <h4>{{ $t('menu.titleTasks') }}</h4>
+    <button @click="$emit('delete-completed')">{{ $t('menu.delComp') }}</button>
+    <button @click="$emit('delete-all')">{{ $t('menu.deleteAll') }}</button>
     <div>
-      <h4>Themes</h4>
-      <button>Classic Mode</button>
-      <button>Dark Mode</button>
-      <button>Light Mode</button>
-      <button>Vibrant Mode</button>
-      <button>Monotone Mode</button>
+      <h4>{{ $t('menu.titleTheme') }}</h4>
+      <button>{{ $t('menu.modeClassic') }}</button>
+      <button>{{ $t('menu.modeDark') }}</button>
+      <button>{{ $t('menu.modeLight') }}</button>
+      <button>{{ $t('menu.modeVibrant') }}</button>
+      <button>{{ $t('menu.modeMonotone') }}</button>
     </div>
 
     <div class="links">
@@ -58,7 +58,7 @@ export default {
     },
     completionRate() {
       return this.todos.length == 0
-        ? ""
+        ? this.$t("status.noTasks")
         : Math.round((this.todoCompleted / this.todos.length) * 100) + "%";
     },
     overdue() {
