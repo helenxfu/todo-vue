@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td class="centering">
-      <input type="checkbox" name="completed">
+      <input type="checkbox" name="completed" />
       {{todo.priority}}
     </td>
     <td>{{todo.category}}</td>
@@ -10,8 +10,8 @@
     <td class="rightAlign">{{todo.id}} Days</td>
     <td class="centering">
       <button @click="toggleModal">Edit</button>
-      <button @click="$emit('delete-todo', todo.id)">X</button>
-      <EditModal :todo="todo" :class="{hideMe : hidden}"/>
+      <button @click="handleDelete">X</button>
+      <EditModal :index="index" :class="{hideMe : hidden}" />
     </td>
   </tr>
 </template>
@@ -25,6 +25,10 @@ export default {
     todo: {
       type: Object,
       default: () => {}
+    },
+    index: {
+      type: Number,
+      default: 0
     }
   },
   components: {
@@ -38,6 +42,9 @@ export default {
   methods: {
     toggleModal() {
       this.myModal = !this.myModal;
+    },
+    handleDelete() {
+      this.$store.dispatch("deleteTodo", this.index);
     }
   }
 };

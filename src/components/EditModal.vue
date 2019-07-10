@@ -4,7 +4,7 @@
       <p>Edit Task</p>
       <button @click="$emit('close')">X</button>
     </div>
-    <div>{{todo.title}}</div>
+    <div>{{index}}</div>
   </div>
 </template>
 
@@ -12,9 +12,9 @@
 export default {
   name: "EditModal",
   props: {
-    todo: {
-      type: Object,
-      default: () => {}
+    index: {
+      type: Number,
+      default: 0
     }
   }
 };

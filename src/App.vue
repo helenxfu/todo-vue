@@ -1,13 +1,14 @@
 <template>
   <div class="mainContainer">
-    <Menu @delete-completed="deleteCompleted" @delete-all="deleteAll" :todos="todos"/>
-    <AppBody :todos="todos" class="mainBody" @delete-todo="deleteTodo" @add-todo="addTodo"/>
+    <Menu />
+    <AppBody :todos="todos" class="mainBody" />
   </div>
 </template>
 
 <script>
 import Menu from "./components/Menu.vue";
 import AppBody from "./components/AppBody.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "app",
@@ -15,84 +16,7 @@ export default {
     Menu,
     AppBody
   },
-  data() {
-    return {
-      todos: [
-        {
-          id: 0,
-          title: "Java intro",
-          priority: 2,
-          category: "Java",
-          limit: "2019-08-14",
-          completed: false
-        },
-        {
-          id: 1,
-          title: "Vue Todo",
-          priority: 2,
-          category: "Vue",
-          limit: "2019-07-11",
-          completed: false
-        },
-        {
-          id: 2,
-          title: "React course",
-          priority: 1,
-          category: "React",
-          limit: "2019-07-22",
-          completed: false
-        },
-        {
-          id: 3,
-          title: "React Calendar",
-          priority: 1,
-          category: "React",
-          limit: "2019-07-30",
-          completed: false
-        },
-        {
-          id: 4,
-          title: "CS50",
-          priority: 0,
-          category: "YouTube",
-          limit: "2019-09-12",
-          completed: false
-        },
-        {
-          id: 5,
-          title: "Illustrator crashcourse",
-          priority: 0,
-          category: "Adobe",
-          limit: "2019-08-22",
-          completed: false
-        },
-        {
-          id: 6,
-          title: "InDesign",
-          priority: 0,
-          category: "Adobe",
-          limit: "2019-09-02",
-          completed: false
-        }
-      ]
-    };
-  },
-  methods: {
-    deleteTodo(id) {
-      this.todos = this.todos.filter(x => x.id !== id);
-    },
-    deleteAll() {
-      if (confirm("Are you sure you want to delete all?")) {
-        this.todos = [];
-      }
-    },
-    deleteCompleted() {
-      this.todos = this.todos.filter(x => !x.completed);
-    },
-    addTodo(newTodo) {
-      this.todos.push(newTodo);
-    }
-  }
+  computed: mapState(["todos"])
 };
 </script>
 
@@ -138,6 +62,10 @@ button {
   text-decoration: none;
   padding: 5px;
   transition-duration: 0.3s;
+}
+button:disabled {
+  cursor: default;
+  color: rgb(202, 202, 202);
 }
 .mainContainer {
   display: flex;

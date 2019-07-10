@@ -12,7 +12,7 @@ export default new Vuex.Store({
         priority: 2,
         category: "Java",
         limit: "2019-08-14",
-        completed: false
+        completed: true
       },
       {
         id: 1,
@@ -52,7 +52,7 @@ export default new Vuex.Store({
         priority: 0,
         category: "Adobe",
         limit: "2019-08-22",
-        completed: false
+        completed: true
       },
       {
         id: 6,
@@ -65,12 +65,47 @@ export default new Vuex.Store({
     ]
   },
   getters: {
-
-  },
-  mutations: {
-
+    todoLength: state => {
+      return state.todos.length
+    },
+    todoCompleted: state => {
+      return state.todos.filter(x => x.completed).length
+    },
+    completionRate: (state, getters) => {
+      return getters.todoLength === 0 ? "no" :
+        Math.round((getters.todoCompleted / getters.todoLength) * 100) + "%"
+    }
   },
   actions: {
+    deleteAll({ commit }) {
+      let confirmed = confirm("Are you sure you want to delete all?")
+      if (confirmed) {
+        commit('deleteAll')
+      }
+    },
+    deleteCompleted({ commit }) {
+      commit('deleteCompleted')
+    },
+    deleteTodo({ commit }, id) {
+      commit('deleteTodo', id)
+    },
+    addTodo(context, payload) {
+      context.commit('addTodo', payload)
+    }
+  },
+  mutations: {
+    deleteTodo(state, id) {
+      this.state.todos = state.todos.filter(x => x.id !== id)
+    },
+    deleteAll: state => {
+      state.todos = [];
+    },
+    deleteCompleted: state => {
+      state.todos = state.todos.filter(x => !x.completed)
+    },
+    addTodo: (state, payload) => {
+      state.todos.push(payload)
+    }
 
   }
 })

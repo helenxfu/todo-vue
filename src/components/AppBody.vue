@@ -1,9 +1,9 @@
 <template>
   <div class="bodyContainer">
     <Header />
-    <AddNewTask :newId="lastItem" @add-todo="transferAdd" />
-    <EmptyTask v-if="todos.length === 0" />
-    <TaskTable v-else @delete-todo="transferData" />
+    <AddNewTask />
+    <EmptyTask v-if="$store.getters.todoLength === 0" />
+    <TaskTable v-else />
   </div>
 </template>
 
@@ -20,29 +20,6 @@ export default {
     AddNewTask,
     EmptyTask,
     TaskTable
-  },
-  props: {
-    todos: {
-      type: Array,
-      default: () => []
-    }
-  },
-  computed: {
-    lastItem() {
-      let last = 0;
-      if (this.todos.length > 0) {
-        last = this.todos[this.todos.length - 1].id + 1;
-      }
-      return last;
-    }
-  },
-  methods: {
-    transferData(id) {
-      this.$emit("delete-todo", id);
-    },
-    transferAdd(newTodo) {
-      this.$emit("add-todo", newTodo);
-    }
   }
 };
 </script>

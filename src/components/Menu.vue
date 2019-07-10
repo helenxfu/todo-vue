@@ -5,11 +5,11 @@
     <div class="status">
       <h3>
         {{ $t('status.tableCount') }}
-        <span>{{todos.length}}</span>
+        <span>{{todoLength}}</span>
       </h3>
       <h3>
         {{ $t('status.tableRemain') }}
-        <span>{{todos.length - todoCompleted}}</span>
+        <span>{{todoLength - todoCompleted}}</span>
       </h3>
       <h3>
         {{ $t('status.tableOverdue') }}
@@ -25,8 +25,8 @@
       </h3>
     </div>
     <h4>{{ $t('menu.titleTasks') }}</h4>
-    <button @click="$emit('delete-completed')">{{ $t('menu.delComp') }}</button>
-    <button @click="$emit('delete-all')">{{ $t('menu.deleteAll') }}</button>
+    <button @click="deleteCompleted()" :disabled="todoCompleted === 0">{{ $t('menu.delComp') }}</button>
+    <button @click="deleteAll()" :disabled="todoLength === 0">{{ $t('menu.deleteAll') }}</button>
     <div>
       <h4>{{ $t('menu.titleTheme') }}</h4>
       <button>{{ $t('menu.modeClassic') }}</button>
@@ -44,26 +44,18 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "Menu",
-  props: {
-    todos: {
-      type: Array,
-      default: () => []
-    }
-  },
   computed: {
-    todoCompleted() {
-      return this.todos.filter(x => x.completed).length;
-    },
-    completionRate() {
-      return this.todos.length == 0
-        ? this.$t("status.noTasks")
-        : Math.round((this.todoCompleted / this.todos.length) * 100) + "%";
-    },
+    ...mapGetters(["todoLength", "todoCompleted", "completionRate"]),
     overdue() {
       return 0;
     }
+  },
+  methods: {
+    ...mapActions(["deleteAll", "deleteCompleted"])
   }
 };
 </script>

@@ -8,7 +8,7 @@
       <th class="rightAlign">{{ $t('table.titleRemain') }}</th>
       <th></th>
     </tr>
-    <Tr v-for="todo in todos" :todo="todo" :key="todo.id" @delete-todo="deleteTodo" />
+    <Tr v-for="(todo, index) in todos" :todo="todo" :index="index" :key="index" />
   </table>
 </template>
 
@@ -22,11 +22,6 @@ export default {
   computed: mapState(["todos"]),
   components: {
     Tr
-  },
-  methods: {
-    deleteTodo(id) {
-      this.$emit("delete-todo", id);
-    }
   }
 };
 </script>
