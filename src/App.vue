@@ -41,6 +41,7 @@ input,
 button {
   border: none;
   outline: none;
+  text-decoration: none;
 }
 .noselect {
   -webkit-touch-callout: none;
@@ -62,6 +63,18 @@ button {
   text-decoration: none;
   padding: 5px;
   transition-duration: 0.3s;
+}
+button {
+  cursor: pointer;
+  transition-property: filter;
+  transition-duration: 1s;
+}
+button:hover {
+  filter: hue-rotate(270deg);
+}
+button:active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 button:disabled {
   cursor: default;

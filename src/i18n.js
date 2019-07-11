@@ -22,7 +22,7 @@ export default new VueI18n({
         titlePriority: 'Priority', titleEditData: 'Edit Data', inputContentsNew: 'Add new todo item here...', inputContentsEdit: 'Edit title name here...', inputCategory: 'category name', buttonSubmit: 'submit', buttonSubmitEdit: 'Update', buttonReset: 'reset', completed: 'Completed'
       },
       countDown: {
-        today: 'TODAY!', passed: 'PASSED!!', count: 'Days Remain: '
+        today: 'TODAY!', passed: 'PASSED!!'
       },
       text: {
         subtitle: 'Todo Application for your long term goals', made: 'Made with Nuxt', more: 'For more infirmation...', none: 'Please add tasks from the form below'
@@ -39,10 +39,10 @@ export default new VueI18n({
         status: '状態', titleCategory: '類別', titleName: 'タスク名', titleLimit: '期限', titleRemain: '残留日数', buttonEdit: '編集', priorityHigh: '高', priorityMid: '中', priorityLow: '低'
       },
       forms: {
-        titleContents: '内容', titlePriority: '優先度', titleCategory: '類別', titleLimit: '期限', titleEditData: 'データ編集', inputContentsNew: '新しいタスクを追加', inputContentsEdit: 'タスク名を変更', inputCategory: '類別名', buttonSubmit: '追加', buttonSubmitEdit: '変更', buttonReset: 'リセット', buttonEdit: '編集', priorityHigh: '高', priorityMid: '中', priorityLow: '低', completed: '完'
+        titlePriority: '優先度', titleEditData: 'データ編集', inputContentsNew: '新しいタスクを追加', inputContentsEdit: 'タスク名を変更', inputCategory: '類別名', buttonSubmit: '追加', buttonSubmitEdit: '変更', buttonReset: 'リセット', buttonEdit: '編集', priorityHigh: '高', priorityMid: '中', priorityLow: '低', completed: '完'
       },
       countDown: {
-        today: '今日!', passed: '期限過ぎ!', count: '残留日数: '
+        today: '今日!', passed: '期限過ぎ!'
       },
       text: {
         subtitle: 'Todo Application for your long term goals', made: 'Made with Nuxt', more: 'For more infirmation...', none: '下記フォームからタスクを入力してください'
@@ -59,10 +59,10 @@ export default new VueI18n({
         status: '状态', titleCategory: '类别', titleName: '项目名', titleLimit: '期限', titleRemain: '剩余天数', buttonEdit: '变更', priorityHigh: '高', priorityMid: '中', priorityLow: '低'
       },
       forms: {
-        titleContents: '内容', titlePriority: '优先度', titleCategory: '类别', titleLimit: '期限', titleEditData: '变更项目', inputContentsNew: '追加新的项目', inputContentsEdit: '变更项目名', inputCategory: '类别名', buttonSubmit: '追加', buttonSubmitEdit: '变更', buttonReset: '重置', buttonEdit: '变更', priorityHigh: '高', priorityMid: '中', priorityLow: '低', completed: '完'
+        titlePriority: '优先度', titleEditData: '变更项目', inputContentsNew: '追加新的项目', inputContentsEdit: '变更项目名', inputCategory: '类别名', buttonSubmit: '追加', buttonSubmitEdit: '变更', buttonReset: '重置', buttonEdit: '变更', priorityHigh: '高', priorityMid: '中', priorityLow: '低', completed: '完'
       },
       countDown: {
-        today: '今天！', passed: '过期了！', count: '剩余天数: '
+        today: '今天！', passed: '过期了！'
       },
       text: {
         subtitle: 'Todo Application for your long term goals', made: 'Made with Nuxt', more: 'For more infirmation...', none: '请追加项目'
