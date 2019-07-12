@@ -1,5 +1,5 @@
 <template>
-  <div>Add Tasks!!</div>
+  <div>{{$t('text.none')}}</div>
 </template>
 
 <script>
@@ -10,6 +10,7 @@ export default {
 
 <style scoped>
 div {
+  margin-top: 50px;
   text-align: center;
 }
 </style>

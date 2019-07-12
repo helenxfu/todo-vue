@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="handleAddTodo()">
       <div class="grow">
-        <label>{{ $t('table.titleName') }}</label>
+        <label>{{$t('table.titleName')}}</label>
         <br />
         <input
           type="text"
@@ -14,7 +14,7 @@
       </div>
 
       <div class="grow">
-        <label>{{ $t('table.titleCategory') }}</label>
+        <label>{{$t('table.titleCategory')}}</label>
         <br />
         <input
           type="text"
@@ -24,29 +24,29 @@
         />
       </div>
       <div>
-        <label>{{ $t('table.titleLimit') }}</label>
+        <label>{{$t('table.titleLimit')}}</label>
         <br />
         <input v-model="limit" type="date" name="limit" required />
       </div>
       <div class="priority">
-        <label>{{ $t('forms.titlePriority') }}</label>
+        <label>{{$t('forms.titlePriority')}}</label>
         <div class="priorityButtons">
           <label>
             <input v-model="priority" type="radio" name="priority" value="0" />
-            {{ $t('table.priorityLow') }}
+            {{$t('table.priorityLow')}}
           </label>
           <label>
             <input v-model="priority" type="radio" name="priority" value="1" />
-            {{ $t('table.priorityMid') }}
+            {{$t('table.priorityMid')}}
           </label>
           <label>
             <input v-model="priority" type="radio" name="priority" value="2" />
-            {{ $t('table.priorityHigh') }}
+            {{$t('table.priorityHigh')}}
           </label>
         </div>
       </div>
-      <input type="submit" :value="$t('forms.buttonSubmit')" />
       <input type="reset" :value="$t('forms.buttonReset')" />
+      <input type="submit" :value="$t('forms.buttonSubmit')" />
     </form>
   </div>
 </template>
@@ -132,6 +132,9 @@ input[type="reset"] {
   transition-duration: 1s;
   align-self: flex-end;
 }
+input[type="submit"] {
+  background-color: rgb(248, 247, 155);
+}
 input[type="submit"]:hover,
 input[type="reset"]:hover {
   filter: hue-rotate(270deg);
@@ -139,6 +142,5 @@ input[type="reset"]:hover {
 input[type="submit"]:active,
 input[type="reset"]:active {
   transform: translateY(1px);
-  box-shadow: none;
 }
 </style>

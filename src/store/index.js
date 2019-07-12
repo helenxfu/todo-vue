@@ -1,11 +1,16 @@
 import Vuex from 'vuex';
-import Vue from 'vue'
+import Vue from 'vue';
+import i18n from '../i18n.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     today: new Date(),
+    reverse: false,
+    filterBy: {
+      priority: false, category: false, title: false, limit: false
+    },
     todos: [
       {
         id: 0,
@@ -13,7 +18,7 @@ export default new Vuex.Store({
         priority: 2,
         category: "Java",
         limit: "2019-08-14",
-        completed: true
+        completed: false
       },
       {
         id: 1,
@@ -53,7 +58,7 @@ export default new Vuex.Store({
         priority: 0,
         category: "Adobe",
         limit: "2019-08-22",
-        completed: true
+        completed: false
       },
       {
         id: 6,
@@ -73,7 +78,7 @@ export default new Vuex.Store({
       return state.todos.filter(x => x.completed).length
     },
     completionRate: (state, getters) => {
-      return getters.todoLength === 0 ? "no" :
+      return getters.todoLength === 0 ? i18n.t('status.noTasks') :
         Math.round((getters.todoCompleted / getters.todoLength) * 100) + "%"
     },
     dateToday(state) {
@@ -89,6 +94,17 @@ export default new Vuex.Store({
       }
       today = yyyy + '-' + mm + '-' + dd
       return today
+    },
+    overdue(state, getters) {
+      let count = 0
+      let today = new Date(getters.dateToday)
+      for (let i = 0; i < state.todos.length; i++) {
+        const countDown =
+          (new Date(state.todos[i].limit) - today) /
+          86400000;
+        if (countDown < 0) count++
+      }
+      return count
     }
   },
   actions: {
@@ -101,16 +117,30 @@ export default new Vuex.Store({
     deleteCompleted({ commit }) {
       commit('deleteCompleted')
     },
-    deleteTodo({ commit }, id) {
-      commit('deleteTodo', id)
+    deleteTodo({ commit }, index) {
+      commit('deleteTodo', index)
     },
     addTodo(context, payload) {
       context.commit('addTodo', payload)
+    },
+    editTodo({ commit }, payload) {
+      commit('editTodo', payload)
+    },
+    toggleComplete({ commit }, index) {
+      commit('toggleComplete', index)
+    },
+    filterFunction({ commit, state }, payload) {
+      if (state.filterBy[payload] === true) {
+        state.reverse = !state.reverse
+      } else {
+        commit('resetFilter', payload)
+      }
+      commit('filterFunction', payload)
     }
   },
   mutations: {
-    deleteTodo(state, id) {
-      this.state.todos = state.todos.filter(x => x.id !== id)
+    deleteTodo(state, index) {
+      state.todos.splice(index, 1)
     },
     deleteAll: state => {
       state.todos = [];
@@ -120,7 +150,34 @@ export default new Vuex.Store({
     },
     addTodo: (state, payload) => {
       state.todos.push(payload)
+    },
+    editTodo: (state, payload) => {
+      state.todos.splice(payload.index, 1, payload.changeTodo)
+    },
+    toggleComplete: (state, index) => {
+      state.todos[index].completed = !state.todos[index].completed
+    },
+    resetFilter: (state, payload) => {
+      Object.keys(state.filterBy).forEach(element => {
+        state.filterBy[element] = false
+      });
+      state.reverse = false
+      state.filterBy[payload] = true
+    },
+    filterFunction: (state, payload) => {
+      let x = 1
+      let y = -1
+      if (state.reverse) {
+        [x, y] = [y, x]
+      }
+      if (payload === "limit") {
+        state.todos
+          .sort((a, b) => (new Date(a.limit) < new Date(b.limit) ? x : y))
+          .sort(done => (done.completed ? 1 : -1))
+      } else {
+        state.todos.sort((a, b) => (a[payload] < b[payload] ? x : y))
+          .sort(done => (done.completed ? 1 : -1))
+      }
     }
-
   }
 })

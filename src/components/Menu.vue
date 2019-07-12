@@ -4,36 +4,36 @@
     <h2>Task Tracker</h2>
     <div class="status">
       <h3>
-        {{ $t('status.tableCount') }}
+        {{$t('status.tableCount')}}
         <span>{{todoLength}}</span>
       </h3>
       <h3>
-        {{ $t('status.tableRemain') }}
+        {{$t('status.tableRemain')}}
         <span>{{todoLength - todoCompleted}}</span>
       </h3>
       <h3>
-        {{ $t('status.tableOverdue') }}
+        {{$t('status.tableOverdue')}}
         <span :class="{warning : overdue > 0}">{{overdue}}</span>
       </h3>
       <h3>
-        {{ $t('status.tableComp') }}
+        {{$t('status.tableComp')}}
         <span>{{todoCompleted}}</span>
       </h3>
       <h3>
-        {{ $t('status.tableRate') }}
-        <span>{{completionRate}}</span>
+        {{$t('status.tableRate')}}
+        <span :class="{compMsg : todoLength === 0}">{{completionRate}}</span>
       </h3>
     </div>
-    <h4>{{ $t('menu.titleTasks') }}</h4>
-    <button @click="deleteCompleted()" :disabled="todoCompleted === 0">{{ $t('menu.delComp') }}</button>
-    <button @click="deleteAll()" :disabled="todoLength === 0">{{ $t('menu.deleteAll') }}</button>
+    <h4>{{$t('menu.titleTasks')}}</h4>
+    <button @click="deleteCompleted()" :disabled="todoCompleted === 0">{{$t('menu.delComp')}}</button>
+    <button @click="deleteAll()" :disabled="todoLength === 0">{{$t('menu.deleteAll')}}</button>
     <div>
-      <h4>{{ $t('menu.titleTheme') }}</h4>
-      <button>{{ $t('menu.modeClassic') }}</button>
-      <button>{{ $t('menu.modeDark') }}</button>
-      <button>{{ $t('menu.modeLight') }}</button>
-      <button>{{ $t('menu.modeVibrant') }}</button>
-      <button>{{ $t('menu.modeMonotone') }}</button>
+      <h4>{{$t('menu.titleTheme')}}</h4>
+      <button>{{$t('menu.modeClassic')}}</button>
+      <button>{{$t('menu.modeDark')}}</button>
+      <button>{{$t('menu.modeLight')}}</button>
+      <button>{{$t('menu.modeVibrant')}}</button>
+      <button>{{$t('menu.modeMonotone')}}</button>
     </div>
 
     <div class="links">
@@ -49,10 +49,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Menu",
   computed: {
-    ...mapGetters(["todoLength", "todoCompleted", "completionRate"]),
-    overdue() {
-      return 0;
-    }
+    ...mapGetters(["todoLength", "todoCompleted", "completionRate", "overdue"])
   },
   methods: {
     ...mapActions(["deleteAll", "deleteCompleted"])
@@ -98,6 +95,9 @@ span {
   right: 0;
   font-size: 40px;
   color: rgba(153, 50, 204, 0.6);
+}
+.compMsg {
+  font-size: 20px;
 }
 .warning {
   color: rgba(255, 0, 0, 0.4);
