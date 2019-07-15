@@ -107,7 +107,7 @@ export default {
 .modalMask {
   background-color: rgba(113, 168, 168, 0.6);
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   height: 100%;

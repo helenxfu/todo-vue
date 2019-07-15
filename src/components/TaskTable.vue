@@ -3,26 +3,23 @@
     <tr>
       <th @click="handleFilter('priority')">
         {{$t('table.status')}}
-        <span
-          v-bind:class="{active:isActive}"
-          v-on:click="isActive=!isActive"
-        >&#9655;</span>
+        <span :class="renderClass('priority')">&#9655;</span>
       </th>
       <th @click="handleFilter('category')">
         {{$t('table.titleCategory')}}
-        <span>&#9655;</span>
+        <span :class="renderClass('category')">&#9655;</span>
       </th>
       <th @click="handleFilter('title')">
         {{$t('table.titleName')}}
-        <span>&#9655;</span>
+        <span :class="renderClass('title')">&#9655;</span>
       </th>
       <th @click="handleFilter('limit')">
         {{$t('table.titleLimit')}}
-        <span>&#9655;</span>
+        <span :class="renderClass('limit')">&#9655;</span>
       </th>
       <th class="rightAlign" @click="handleFilter('limit')">
         {{$t('table.titleRemain')}}
-        <span>&#9655;</span>
+        <span :class="renderClass('limit')">&#9655;</span>
       </th>
       <th></th>
     </tr>
@@ -37,19 +34,24 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "TaskTable",
-  computed: mapState(["todos"]),
+  computed: {
+    ...mapState(["todos", "filterBy", "reverse"])
+  },
   components: {
     Tr
-  },
-  data() {
-    return {
-      isActive: false
-    };
   },
   methods: {
     ...mapActions(["filterFunction"]),
     handleFilter(text) {
       this.filterFunction(text);
+    },
+    renderClass(text) {
+      if (this.filterBy[text] && this.reverse) {
+        return "reversed";
+      } else if (this.filterBy[text]) {
+        return "activate";
+      }
+      return "deactivate";
     }
   }
 };
@@ -69,12 +71,8 @@ th {
   padding: 5px 18px 5px 2px;
   position: relative;
 }
-
-tr:nth-child(even) {
-  background-color: rgb(245, 235, 252);
-}
-tr:hover {
-  background-color: rgb(230, 208, 235) !important;
+th:hover {
+  background-color: rgb(161, 86, 86);
 }
 .rightAlign {
   text-align: right;
@@ -87,9 +85,16 @@ span {
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }
-.active {
+.activate {
   transform: rotate(90deg);
   transition-duration: 1s;
-  transition-timing-function: linear;
+}
+.reversed {
+  transform: rotate(-90deg);
+  transition-duration: 1s;
+}
+.deactivate {
+  transform: rotate(0deg);
+  transition-duration: 1s;
 }
 </style>

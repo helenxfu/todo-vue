@@ -16,7 +16,10 @@ export default {
     Menu,
     AppBody
   },
-  computed: mapState(["todos"])
+  computed: mapState(["todos"]),
+  created() {
+    this.$store.dispatch("todayRendered");
+  }
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr :class="priorityClass">
     <td class="pointer" @click="handleComplete">
       <img v-if="todo.completed" class="checkIcon" src="../assets/svg/check.svg" alt />
       <img v-else class="checkIcon" src="../assets/svg/uncheck.svg" alt />
@@ -13,9 +13,9 @@
       <div class="buttonWrapper">
         <button @click="toggleModal">{{$t('table.buttonEdit')}}</button>
         <button @click="handleDelete">X</button>
-        <EditModal :index="index" :todo="todo" :class="{hideMe : hidden}" @close="toggleModal" />
       </div>
     </td>
+    <EditModal :index="index" :todo="todo" :class="{hideMe : hidden}" @close="toggleModal" />
   </tr>
 </template>
 
@@ -50,13 +50,28 @@ export default {
         ? this.$t("table.priorityMid")
         : this.$t("table.priorityHigh");
     },
+    countDown() {
+      return (
+        (new Date(this.todo.limit) - this.$store.state.todayRendered) / 86400000
+      );
+    },
+    priorityClass() {
+      if (this.todo.completed) {
+        return "completed";
+      } else if (this.countDown < 0) {
+        return "passed";
+      } else {
+        return this.todo.priority === 0
+          ? "priorityLow"
+          : this.todo.priority === 1
+          ? "priorityMid"
+          : "priorityHigh";
+      }
+    },
     dateRemain() {
-      const countDown =
-        (new Date(this.todo.limit) - new Date(this.$store.getters.dateToday)) /
-        86400000;
-      return countDown > 0
-        ? countDown + " " + this.$t("table.days")
-        : countDown === 0
+      return this.countDown > 0
+        ? this.countDown + " " + this.$t("table.days")
+        : this.countDown === 0
         ? this.$t("countDown.today")
         : this.$t("countDown.passed");
     }
@@ -91,6 +106,7 @@ td {
 button {
   padding: 4px;
   border-radius: 4px;
+  background-color: transparent;
 }
 button:hover {
   background-color: rgb(220, 193, 255);
@@ -107,5 +123,36 @@ button:hover {
 .pointer {
   cursor: pointer;
   padding-left: 5px;
+}
+.completed {
+  background-color: rgb(87, 87, 87);
+}
+.passed {
+  background-color: rgb(172, 60, 60);
+}
+.priorityLow {
+  background-color: rgb(174, 213, 219);
+}
+.priorityMid {
+  background-color: rgb(219, 216, 174);
+}
+.priorityHigh {
+  background-color: rgb(253, 200, 200);
+}
+.completed:hover {
+  background-color: rgb(58, 58, 58);
+  color: white;
+}
+.passed:hover {
+  background-color: rgb(187, 18, 18);
+}
+.priorityLow:hover {
+  background-color: rgb(127, 206, 218);
+}
+.priorityMid:hover {
+  background-color: rgb(250, 242, 135);
+}
+.priorityHigh:hover {
+  background-color: rgb(243, 152, 152);
 }
 </style>

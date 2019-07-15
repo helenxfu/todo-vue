@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     today: new Date(),
+    todayRendered: {},
     reverse: false,
     filterBy: {
       priority: false, category: false, title: false, limit: false
@@ -95,9 +96,9 @@ export default new Vuex.Store({
       today = yyyy + '-' + mm + '-' + dd
       return today
     },
-    overdue(state, getters) {
+    overdue(state) {
       let count = 0
-      let today = new Date(getters.dateToday)
+      let today = state.todayRendered
       for (let i = 0; i < state.todos.length; i++) {
         const countDown =
           (new Date(state.todos[i].limit) - today) /
@@ -108,6 +109,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    todayRendered({ commit, getters }) {
+      const payload = new Date(getters.dateToday)
+      commit('todayRendered', payload)
+    },
     deleteAll({ commit }) {
       let confirmed = confirm("Are you sure you want to delete all?")
       if (confirmed) {
@@ -139,6 +144,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    todayRendered: (state, payload) => {
+      state.todayRendered = payload
+    },
     deleteTodo(state, index) {
       state.todos.splice(index, 1)
     },
