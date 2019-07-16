@@ -1,0 +1,84 @@
+@import "./base/variables";
+
+@import "./components/menu";
+@import "./components/addNewTask";
+@import "./components/editModal";
+@import "./components/header";
+@import "./components/taskTable";
+@import "./components/tr";
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: rgb(34, 34, 34);
+}
+img {
+  width: 100%;
+}
+input,
+button {
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+button {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5px;
+  transition-duration: 0.3s;
+}
+button {
+  cursor: pointer;
+  transition-property: filter;
+  transition-duration: 1s;
+}
+button:hover {
+  filter: hue-rotate(270deg);
+}
+button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+button:disabled {
+  cursor: default;
+  color: rgb(202, 202, 202);
+}
+.mainContainer {
+  display: flex;
+}
+.mainBody {
+  flex-grow: 2;
+}
+
+.bodyContainer {
+  padding: 30px;
+  background-color: rgb(254, 250, 255);
+}
+
+.noItems {
+  margin-top: 50px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    flex-direction: column;
+  }
+}

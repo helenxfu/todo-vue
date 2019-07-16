@@ -23,10 +23,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.bodyContainer {
-  padding: 30px;
-  background-color: rgb(254, 250, 255);
-}
-</style>

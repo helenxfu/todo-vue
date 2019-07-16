@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+
+  th {
+    background-color: rgb(116, 45, 45);
+    color: white;
+    font-weight: normal;
+    border-right: 1px solid rgb(221, 221, 221);
+    padding: 5px 18px 5px 2px;
+    position: relative;
+  }
+  th:hover {
+    background-color: rgb(161, 86, 86);
+  }
+  .rightAlign {
+    text-align: right;
+  }
+  span {
+    font-size: 10px;
+    position: absolute;
+    bottom: 7px;
+    right: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
+  .activate {
+    transform: rotate(90deg);
+    transition-duration: 1s;
+  }
+  .reversed {
+    transform: rotate(-90deg);
+    transition-duration: 1s;
+  }
+  .deactivate {
+    transform: rotate(0deg);
+    transition-duration: 1s;
+  }
+}

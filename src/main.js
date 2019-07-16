@@ -1,4 +1,7 @@
 import Vue from 'vue'
+
+import './assets/sass/index.scss'
+
 import App from './App.vue'
 import store from './store'
 import i18n from './i18n'
