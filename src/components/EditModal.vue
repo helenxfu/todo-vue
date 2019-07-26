@@ -83,6 +83,15 @@ export default {
       limit: this.todo.limit
     };
   },
+  watch: {
+    // eslint-disable-next-line no-unused-vars
+    todo(newVal, oldVal) {
+      this.title = this.todo.title;
+      this.priority = this.todo.priority;
+      this.category = this.todo.category;
+      this.limit = this.todo.limit;
+    }
+  },
   methods: {
     ...mapActions(["editTodo"]),
     handleEditTodo() {

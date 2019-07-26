@@ -5,6 +5,9 @@
   }
   label {
     font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .grow {
     flex-grow: 2;
@@ -17,7 +20,7 @@
     min-width: 132px;
   }
   input {
-    border: 1px solid pink;
+    border: 1px solid $input-border;
   }
   input[type="text"] {
     padding: 5px;
@@ -39,14 +42,14 @@
     width: 50px;
     height: 22px;
     border-radius: 7px;
-    background-color: rgb(208, 254, 255);
+    background-color: $input-button-submit;
     cursor: pointer;
     transition-property: filter;
     transition-duration: 1s;
-    align-self: flex-end;
+    margin-bottom: 3px;
   }
   input[type="submit"] {
-    background-color: rgb(248, 247, 155);
+    background-color: $input-button-reset;
   }
   input[type="submit"]:hover,
   input[type="reset"]:hover {
@@ -55,5 +58,10 @@
   input[type="submit"]:active,
   input[type="reset"]:active {
     transform: translateY(1px);
+  }
+  .resetSubmit {
+    display: flex;
+    min-width: 100px;
+    align-items: flex-end;
   }
 }

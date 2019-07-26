@@ -1,28 +1,25 @@
 table {
   width: 100%;
-  text-align: left;
+  max-height: 100vh;
   border-collapse: collapse;
-
+  text-align: left;
   th {
-    background-color: rgb(116, 45, 45);
-    color: white;
+    background-color: $th-background;
+    color: $th-text;
     font-weight: normal;
-    border-right: 1px solid rgb(221, 221, 221);
+    border-right: 1px solid $th-border;
     padding: 5px 18px 5px 2px;
     position: relative;
   }
   th:hover {
-    background-color: rgb(161, 86, 86);
-  }
-  .rightAlign {
-    text-align: right;
+    background-color: $th-background-hover;
   }
   span {
     font-size: 10px;
     position: absolute;
     bottom: 7px;
     right: 5px;
-    color: rgba(255, 255, 255, 0.5);
+    color: $arrow;
     cursor: pointer;
   }
   .activate {

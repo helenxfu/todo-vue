@@ -45,8 +45,10 @@
           </label>
         </div>
       </div>
-      <input type="reset" :value="$t('forms.buttonReset')" />
-      <input type="submit" :value="$t('forms.buttonSubmit')" />
+      <div class="resetSubmit">
+        <input type="reset" :value="$t('forms.buttonReset')" />
+        <input type="submit" :value="$t('forms.buttonSubmit')" />
+      </div>
     </form>
   </div>
 </template>

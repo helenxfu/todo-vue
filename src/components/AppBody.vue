@@ -3,7 +3,9 @@
     <Header />
     <AddNewTask />
     <EmptyTask v-if="$store.getters.todoLength === 0" />
-    <TaskTable v-else />
+    <div v-else class="tableContainer">
+      <TaskTable />
+    </div>
   </div>
 </template>
 

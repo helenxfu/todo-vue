@@ -5,7 +5,6 @@
 @import "./components/editModal";
 @import "./components/header";
 @import "./components/taskTable";
-@import "./components/tr";
 
 * {
   box-sizing: border-box;
@@ -16,9 +15,9 @@
 }
 
 body {
-  font-family: sans-serif;
-  font-size: 16px;
-  color: rgb(34, 34, 34);
+  font-family: "Noto Serif SC", serif;
+  font-size: 14px;
+  color: $body-font;
 }
 img {
   width: 100%;
@@ -43,6 +42,7 @@ button {
   text-decoration: none;
   padding: 5px;
   transition-duration: 0.3s;
+  background-color: rgba(0, 0, 0, 0);
 }
 button {
   cursor: pointer;
@@ -58,27 +58,147 @@ button:active {
 }
 button:disabled {
   cursor: default;
-  color: rgb(202, 202, 202);
+  color: $menu-btn-disabled;
 }
 .mainContainer {
   display: flex;
 }
+
 .mainBody {
   flex-grow: 2;
 }
 
 .bodyContainer {
   padding: 30px;
-  background-color: rgb(254, 250, 255);
+  background-color: $body-container;
 }
 
+.tableContainer {
+  overflow: auto;
+}
 .noItems {
   margin-top: 50px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+td {
+  border: 1px solid $th-border;
+  padding: 2px 2px;
+}
+.buttonTd {
+  padding: 0;
+}
+.buttonWrapper {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+.buttonWrapper button {
+  padding: 4px;
+  border-radius: 4px;
+}
+.buttonWrapper button:hover {
+  background-color: $td-btn-hover;
+}
+.hideMe {
+  display: none;
+}
+.rightAlign {
+  text-align: right;
+}
+.pointer {
+  cursor: pointer;
+  padding-left: 5px;
+  display: flex;
+  align-content: center;
+}
+.checkIcon {
+  width: 15px;
+  margin-right: 2px;
+  margin-bottom: 1px;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.completed {
+  background-color: $completed;
+}
+.passed {
+  background-color: $passed;
+}
+.priorityLow {
+  background-color: $priority-low;
+}
+.priorityMid {
+  background-color: $priority-mid;
+}
+.priorityHigh {
+  background-color: $priority-high;
+}
+.completed:hover {
+  background-color: $completed-hover;
+  color: $completed-hover-text;
+}
+.passed:hover {
+  background-color: $passed-hover;
+}
+.priorityLow:hover {
+  background-color: $priority-low-hover;
+}
+.priorityMid:hover {
+  background-color: $priority-mid-hover;
+}
+.priorityHigh:hover {
+  background-color: $priority-high-hover;
+}
+
+svg {
+  transition: all 1s linear;
+}
+.check {
+  stroke: $check-stroke;
+  fill: $check-fill;
+}
+.uncheck {
+  stroke: $uncheck-stroke;
+  fill: $uncheck-fill;
+}
+
+@media only screen and (max-width: 700px) {
   .mainContainer {
-    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+  .bodyContainer {
+    padding: 15px;
+  }
+  .menu {
+    width: 100%;
+    min-height: initial;
+
+    button {
+      display: inline-block;
+      margin: 3px;
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .bodyContainer {
+    padding: 10px;
+  }
+  .addNewTask {
+    form {
+      flex-direction: column;
+    }
+    input[type="date"] {
+      width: 100%;
+    }
+    .priority {
+      padding: 0;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+      align-self: auto;
+    }
   }
 }

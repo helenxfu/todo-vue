@@ -1,9 +1,19 @@
 <template>
-  <tr :class="priorityClass" class="trContainer">
-    <td class="pointer" @click="handleComplete">
-      <img v-if="todo.completed" class="checkIcon" src="../assets/svg/check.svg" alt />
-      <img v-else class="checkIcon" src="../assets/svg/uncheck.svg" alt />
-      {{priorityHandler}}
+  <tr :class="priorityClass">
+    <td @click="handleComplete">
+      <div class="pointer">
+        <svg
+          class="checkIcon"
+          :class="[todo.completed ? 'check' : 'uncheck']"
+          x="0px"
+          y="0px"
+          viewBox="0 0 15 15"
+        >
+          <rect width="15" height="15" />
+          <polyline v-if="todo.completed" points="2.4,8.3 5.7,11.9 12.3,3.5 " />
+        </svg>
+        {{priorityHandler}}
+      </div>
     </td>
     <td>{{todo.category}}</td>
     <td>{{todo.title}}</td>
@@ -89,6 +99,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

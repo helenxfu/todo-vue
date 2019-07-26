@@ -1,23 +1,22 @@
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-end;
   margin-bottom: 30px;
-  border-bottom: 2px solid rgb(69, 43, 77);
+  border-bottom: 2px solid $header-border;
 
   h1 {
     font-size: 25px;
+    font-family: "Berkshire Swash", cursive;
   }
   .btnContainer {
     margin: 3px;
+    min-width: 122px;
   }
   .borderLeft {
-    border-left: 1px solid black;
-  }
-  button {
-    background-color: rgba(255, 255, 255, 0);
+    border-left: 1px solid $header-lang-border;
   }
   button:hover {
-    color: rgb(151, 54, 161);
+    color: $header-lang-hover;
   }
 }

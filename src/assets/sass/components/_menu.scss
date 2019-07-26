@@ -1,46 +1,60 @@
 .menu {
   width: 200px;
-  background-color: rgb(248, 241, 253);
+  background-color: $menu-background;
   text-align: center;
-  padding: 20px;
   min-height: 100vh;
 
   button {
     display: block;
     margin: 5px auto;
     border-radius: 7px;
-    background-color: rgb(248, 241, 253);
-    border: 1px solid rgb(224, 200, 224);
+    background-color: $menu-background;
+    border: 1px solid $menu-btn-border;
   }
   button:hover {
-    background-color: rgb(228, 212, 240);
+    background-color: $menu-btn-hover;
+  }
+  .logo {
+    margin-top: 20px;
+    padding: 5px 15px;
   }
   h1 {
-    font-size: 25px;
+    font-size: 29px;
+    font-family: "Sedgwick Ave Display", cursive;
+    color: $title;
   }
   h2 {
-    font-size: 20px;
+    font-size: 22px;
+    font-family: "Berkshire Swash", cursive;
+    color: $sub-title;
+  }
+  .statusContainer {
+    display: flex;
+    justify-content: center;
   }
   .status {
-    margin: 5px;
+    margin-top: 20px;
   }
   h3 {
-    font-size: 18px;
+    font-size: 17px;
     position: relative;
     margin: 20px;
+    width: 130px;
+    text-align: left;
+    color: $menu-title;
   }
   span {
     position: absolute;
-    bottom: -5px;
+    bottom: -7px;
     right: 0;
     font-size: 40px;
-    color: rgba(153, 50, 204, 0.6);
+    color: $menu-span;
   }
   .compMsg {
     font-size: 20px;
   }
   .warning {
-    color: rgba(255, 0, 0, 0.4);
+    color: $menu-span-warn;
   }
   h4 {
     margin-top: 20px;
@@ -51,5 +65,6 @@
   }
   .credit {
     margin-top: 10px;
+    margin-bottom: 40px;
   }
 }
