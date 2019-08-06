@@ -25,7 +25,7 @@ export default new VueI18n({
         today: 'TODAY', passed: 'OVERDUE'
       },
       text: {
-        subtitle: 'Todo Application for your long term goals', made: 'Made with Nuxt', more: 'For more infirmation...', none: 'Please add tasks from the form above.'
+        none: 'Please add tasks from the form above.'
       }
     },
     ja: {
@@ -45,7 +45,7 @@ export default new VueI18n({
         today: '今日', passed: '期限過ぎ'
       },
       text: {
-        subtitle: 'Todo Application for your long term goals', made: 'Made with Nuxt', more: 'For more infirmation...', none: '上記フォームからタスクを入力してください'
+        none: '上記フォームからタスクを入力してください'
       }
     },
     zh: {
@@ -65,7 +65,7 @@ export default new VueI18n({
         today: '今天', passed: '过期'
       },
       text: {
-        subtitle: 'Todo Application for your long term goals', made: 'Made with Nuxt', more: 'For more infirmation...', none: '请追加项目'
+        none: '请追加项目'
       }
     }
   }

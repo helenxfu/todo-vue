@@ -14,7 +14,7 @@
   button:hover {
     background-color: $menu-btn-hover;
   }
-  .logo {
+  .logoContainer {
     margin-top: 20px;
     padding: 5px 15px;
   }
@@ -50,7 +50,7 @@
     font-size: 40px;
     color: $menu-span;
   }
-  .compMsg {
+  .noTasksText {
     font-size: 20px;
   }
   .warning {
@@ -66,5 +66,55 @@
   .credit {
     margin-top: 10px;
     margin-bottom: 40px;
+  }
+  .logo {
+    width: 100px;
+    margin: 0 auto;
+    svg {
+      .shadow {
+        fill: url(#linear-gradient);
+      }
+      .shadowColor {
+        stop-color: $bottle-shadow;
+      }
+      .task,
+      .no-fill {
+        fill: none;
+      }
+
+      .no-fill {
+        stroke: $bottle;
+        stroke-width: 3px;
+      }
+
+      .cls-2,
+      .bottle-line-1,
+      .task {
+        stroke-miterlimit: 10;
+      }
+
+      .bottle-fill {
+        fill: $bottle;
+      }
+
+      .bottle-line-1 {
+        stroke-linecap: round;
+      }
+      .bottle-line-2 {
+        stroke-linejoin: round;
+      }
+      .task {
+        stroke-width: 8px;
+      }
+      .task-high {
+        stroke: $task-high;
+      }
+      .task-mid {
+        stroke: $task-mid;
+      }
+      .task-low {
+        stroke: $task-low;
+      }
+    }
   }
 }
