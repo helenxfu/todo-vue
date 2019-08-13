@@ -1,0 +1,40 @@
+// media query column adjust
+@media only screen and (max-width: 760px) {
+  .appContainer {
+    flex-direction: column-reverse;
+  }
+  .bodyContainer {
+    padding: 15px;
+  }
+  .menu {
+    width: 100%;
+    min-height: initial;
+
+    button {
+      display: inline-block;
+      margin: 3px;
+    }
+  }
+}
+
+// media query form adjust
+@media only screen and (max-width: 550px) {
+  .bodyContainer {
+    padding: 10px;
+  }
+  .addNewTask {
+    form {
+      flex-direction: column;
+    }
+    input[type="date"] {
+      width: 100%;
+    }
+    .priority {
+      padding: 0;
+    }
+    input[type="submit"],
+    input[type="reset"] {
+      align-self: auto;
+    }
+  }
+}

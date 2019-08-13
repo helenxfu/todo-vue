@@ -2,6 +2,7 @@
   <div class="bodyContainer">
     <Header />
     <AddNewTask />
+    <Legend />
     <EmptyTask v-if="$store.getters.todoLength === 0" />
     <div v-else class="tableContainer">
       <TaskTable />
@@ -14,6 +15,7 @@ import Header from "./Header";
 import AddNewTask from "./AddNewTask";
 import EmptyTask from "./EmptyTask";
 import TaskTable from "./TaskTable";
+import Legend from "./Legend";
 
 export default {
   name: "AppBody",
@@ -21,7 +23,8 @@ export default {
     Header,
     AddNewTask,
     EmptyTask,
-    TaskTable
+    TaskTable,
+    Legend
   }
 };
 </script>

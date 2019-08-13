@@ -1,6 +1,5 @@
 .menu {
   width: 200px;
-  background-color: $menu-background;
   text-align: center;
   min-height: 100vh;
 
@@ -8,11 +7,8 @@
     display: block;
     margin: 5px auto;
     border-radius: 7px;
-    background-color: $menu-background;
-    border: 1px solid $menu-btn-border;
-  }
-  button:hover {
-    background-color: $menu-btn-hover;
+    border-width: 1px;
+    border-style: solid;
   }
   .logoContainer {
     margin-top: 20px;
@@ -21,12 +17,10 @@
   h1 {
     font-size: 29px;
     font-family: "Sedgwick Ave Display", cursive;
-    color: $title;
   }
   h2 {
     font-size: 22px;
     font-family: "Berkshire Swash", cursive;
-    color: $sub-title;
   }
   .statusContainer {
     display: flex;
@@ -41,31 +35,35 @@
     margin: 20px;
     width: 130px;
     text-align: left;
-    color: $menu-title;
   }
   span {
     position: absolute;
     bottom: -7px;
     right: 0;
     font-size: 40px;
-    color: $menu-span;
   }
   .noTasksText {
     font-size: 20px;
-  }
-  .warning {
-    color: $menu-span-warn;
   }
   h4 {
     margin-top: 20px;
     font-size: 16px;
   }
-  .links {
+  .linksContainer {
     margin-top: 10px;
   }
   .credit {
     margin-top: 10px;
     margin-bottom: 40px;
+  }
+  .socialLinks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 7px;
+    width: 140px;
+    margin: 20px auto 0;
+    padding: 5px;
+    cursor: pointer;
   }
   .logo {
     width: 100px;
@@ -74,29 +72,18 @@
       .shadow {
         fill: url(#linear-gradient);
       }
-      .shadowColor {
-        stop-color: $bottle-shadow;
-      }
       .task,
       .no-fill {
         fill: none;
       }
-
       .no-fill {
-        stroke: $bottle;
         stroke-width: 3px;
       }
-
       .cls-2,
       .bottle-line-1,
       .task {
         stroke-miterlimit: 10;
       }
-
-      .bottle-fill {
-        fill: $bottle;
-      }
-
       .bottle-line-1 {
         stroke-linecap: round;
       }
@@ -105,15 +92,6 @@
       }
       .task {
         stroke-width: 8px;
-      }
-      .task-high {
-        stroke: $task-high;
-      }
-      .task-mid {
-        stroke: $task-mid;
-      }
-      .task-low {
-        stroke: $task-low;
       }
     }
   }

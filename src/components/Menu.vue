@@ -162,15 +162,26 @@
     <button @click="deleteAll()" :disabled="todoLength === 0">{{$t('menu.deleteAll')}}</button>
     <div>
       <h4>{{$t('menu.titleTheme')}}</h4>
-      <button>{{$t('menu.modeClassic')}}</button>
-      <button>{{$t('menu.modeDark')}}</button>
-      <button>{{$t('menu.modeLight')}}</button>
-      <button>{{$t('menu.modeVibrant')}}</button>
-      <button>{{$t('menu.modeMonotone')}}</button>
+      <button @click="setTheme('classic')">{{$t('menu.modeClassic')}}</button>
+      <button @click="setTheme('dark')">{{$t('menu.modeDark')}}</button>
+      <button @click="setTheme('pastel')">{{$t('menu.modePastel')}}</button>
     </div>
 
-    <div class="links">
-      <p>links here</p>
+    <div class="linksContainer">
+      <div class="socialLinks">
+        <a href="https://helenxfu.github.io/">
+          <img src="https://helenxfu.github.io/assets/socialLinks/mail.png" alt />
+        </a>
+        <a href="https://twitter.com/HelenStarcloud">
+          <img src="https://helenxfu.github.io/assets/socialLinks/twitter-white.png" alt />
+        </a>
+        <a href="https://www.linkedin.com/in/helenxfu">
+          <img src="https://helenxfu.github.io/assets/socialLinks/linkedIn.png" alt />
+        </a>
+        <a href="https://github.com/helenxfu">
+          <img src="https://helenxfu.github.io/assets/socialLinks/github.png" alt />
+        </a>
+      </div>
     </div>
     <p class="credit">&#169; Starcloud</p>
   </div>
@@ -185,7 +196,7 @@ export default {
     ...mapGetters(["todoLength", "todoCompleted", "completionRate", "overdue"])
   },
   methods: {
-    ...mapActions(["deleteAll", "deleteCompleted"])
+    ...mapActions(["deleteAll", "deleteCompleted", "setTheme"])
   }
 };
 </script>

@@ -1,0 +1,171 @@
+.dark {
+  color: $body-font-b;
+  button {
+    color: $body-font-b;
+    &:hover {
+      background-color: $btn-hover-b;
+    }
+    &:disabled {
+      color: $menu-btn-disabled-b;
+    }
+  }
+
+  .bodyContainer {
+    background-color: $body-container-b;
+  }
+  input[type="reset"] {
+    background-color: $input-button-reset-b;
+  }
+
+  input[type="submit"] {
+    background-color: $input-button-submit-b;
+  }
+  .modalMask {
+    background-color: $modal-mask-b;
+    .modal {
+      background-color: $modal-background-b;
+    }
+  }
+  .headerContainer {
+    border-bottom-color: $header-border-b;
+    h1 {
+      color: $header-border-b;
+    }
+    .borderLeft {
+      border-left-color: $header-border-b;
+    }
+    button {
+      &:hover {
+        color: $btn-hover-b;
+      }
+    }
+  }
+  .legend {
+    .box {
+      border-color: $header-border-b;
+    }
+  }
+
+  .menu {
+    background-color: $menu-background-b;
+    color: $menu-title-b;
+    button {
+      background-color: $menu-background-b;
+      border-color: $menu-btn-border-b;
+    }
+    h1 {
+      color: $title-b;
+    }
+    h2 {
+      color: $sub-title-b;
+    }
+    h3 {
+      color: $menu-title-b;
+    }
+    span {
+      color: $menu-span-b;
+    }
+    .warning {
+      color: $menu-span-warn-b;
+    }
+    svg {
+      .shadowColor {
+        stop-color: $bottle-shadow-b;
+      }
+      .no-fill {
+        stroke: $bottle-b;
+      }
+      .bottle-fill {
+        fill: $bottle-b;
+      }
+      .task-high {
+        stroke: $task-high-b;
+      }
+      .task-mid {
+        stroke: $task-mid-b;
+      }
+      .task-low {
+        stroke: $task-low-b;
+      }
+    }
+  }
+  .emptySvg {
+    .shadowColor {
+      stop-color: $bottle-shadow-b;
+    }
+    .bottle-line,
+    .bottle-line-2,
+    .cap-line,
+    .cap-line-2,
+    .bottle-fill {
+      stroke: $bottle-b;
+    }
+    .task-high {
+      stroke: $task-high-b;
+    }
+    .task-mid {
+      stroke: $task-mid-b;
+    }
+    .task-low {
+      stroke: $task-low-b;
+    }
+  }
+  table {
+    background-color: $menu-background-b;
+    th {
+      background-color: $th-background-b;
+      color: $th-text-b;
+      border-color: $th-border-b;
+      &:hover {
+        background-color: $th-background-hover-b;
+      }
+    }
+    tr {
+      &:hover {
+        background-color: $tr-hover-b;
+      }
+    }
+    span {
+      color: $arrow-b;
+    }
+  }
+
+  td {
+    border-color: $th-border-b;
+  }
+  .completed {
+    background-color: $completed-b;
+    &:hover {
+      background-color: $completed-hover-b;
+    }
+  }
+  .passed {
+    background-color: $passed-b;
+    &:hover {
+      background-color: $passed-hover-b;
+    }
+  }
+  .priorityTag {
+    color: $menu-background-b;
+  }
+  .priorityLow {
+    background-color: $priority-low-b;
+  }
+  .priorityMid {
+    background-color: $priority-mid-b;
+  }
+  .priorityHigh {
+    background-color: $priority-high-b;
+  }
+  input {
+    border-color: $input-border-b;
+  }
+  .check {
+    stroke: $check-stroke-b;
+    fill: $check-fill-b;
+  }
+  .uncheck {
+    stroke: $uncheck-stroke-b;
+    fill: $uncheck-fill-b;
+  }
+}

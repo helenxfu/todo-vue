@@ -28,7 +28,7 @@
         <br />
         <input v-model="limit" type="date" name="limit" required />
       </div>
-      <div class="priority">
+      <div class="priorityContainer">
         <label>{{$t('forms.titlePriority')}}</label>
         <div class="priorityButtons">
           <label>
@@ -45,7 +45,7 @@
           </label>
         </div>
       </div>
-      <div class="resetSubmit">
+      <div class="resetSubmitInput">
         <input type="reset" :value="$t('forms.buttonReset')" />
         <input type="submit" :value="$t('forms.buttonSubmit')" />
       </div>
@@ -73,7 +73,7 @@ export default {
       const newTodo = {
         id: this.title + Math.floor(Math.random() * 100),
         title: this.title,
-        priority: this.priority,
+        priority: Number(this.priority),
         category: this.category,
         limit: this.limit,
         completed: false

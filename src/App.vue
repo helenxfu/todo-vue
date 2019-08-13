@@ -1,5 +1,5 @@
 <template>
-  <div class="mainContainer">
+  <div class="appContainer" :class="theme">
     <Menu />
     <AppBody :todos="todos" class="mainBody" />
   </div>
@@ -16,7 +16,7 @@ export default {
     Menu,
     AppBody
   },
-  computed: mapState(["todos"]),
+  computed: mapState(["todos", "theme"]),
   created() {
     this.$store.dispatch("todayRendered");
   }

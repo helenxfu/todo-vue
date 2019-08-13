@@ -1,5 +1,5 @@
 <template>
-  <div class="noItems">
+  <div class="empty">
     <div class="emptySvg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +191,7 @@
         </g>
       </svg>
     </div>
-    <div class="noItemsText">{{$t('text.none')}}</div>
+    <div class="emptyText">{{$t('text.none')}}</div>
   </div>
 </template>
 

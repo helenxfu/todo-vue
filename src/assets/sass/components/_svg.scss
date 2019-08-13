@@ -1,0 +1,44 @@
+svg {
+  transition: all 1s linear;
+}
+.emptySvg {
+  margin: 0 auto;
+  width: 200px;
+  .shadow {
+    fill: url(#linear-gradient);
+  }
+
+  .bottle-line,
+  .bottle-line-2,
+  .cap-line,
+  .cap-line-2,
+  .task {
+    fill: none;
+  }
+
+  .bottle-line,
+  .bottle-line-2,
+  .cap-line,
+  .cap-line-2 {
+    stroke-width: 3px;
+  }
+
+  .bottle-line,
+  .cap-line-2,
+  .task {
+    stroke-miterlimit: 10;
+  }
+
+  .bottle-line-2,
+  .cap-line-2 {
+    stroke-linecap: round;
+  }
+
+  .bottle-line-2,
+  .cap-line {
+    stroke-linejoin: round;
+  }
+  .task {
+    stroke-width: 8px;
+  }
+}

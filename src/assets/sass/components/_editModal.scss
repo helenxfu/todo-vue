@@ -1,5 +1,4 @@
 .modalMask {
-  background-color: $modal-mask;
   position: fixed;
   z-index: 10;
   left: 0;
@@ -11,7 +10,6 @@
   animation-duration: 1s;
 
   .modal {
-    background-color: $modal-background;
     border-radius: 10px;
     margin: 0 auto;
     width: 300px;
@@ -43,24 +41,10 @@
   label {
     font-size: 14px;
   }
-  input {
-    border: 1px solid $input-border;
-  }
-  input[type="text"] {
-    padding: 10px;
-    width: 100%;
-  }
-  input[type="radio"] {
-    height: 1em;
-    margin: 5px 2px;
-    cursor: pointer;
-  }
+
   input[type="date"] {
     padding: 7.5px;
     width: 100%;
-  }
-  input[type="date"]::-webkit-inner-spin-button {
-    display: none;
   }
   .btnContainer {
     display: flex;
@@ -70,21 +54,6 @@
     flex-grow: 2;
     height: 30px;
     font-size: 14px;
-    background-color: $input-button-submit;
-    cursor: pointer;
-    transition-property: filter;
-    transition-duration: 1s;
-  }
-  input[type="submit"] {
-    background-color: $input-button-reset;
-  }
-  input[type="submit"]:hover,
-  input[type="reset"]:hover {
-    filter: hue-rotate(270deg);
-  }
-  input[type="submit"]:active,
-  input[type="reset"]:active {
-    transform: translateY(1px);
   }
 
   @keyframes modalOpen {

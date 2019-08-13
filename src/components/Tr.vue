@@ -1,7 +1,7 @@
 <template>
-  <tr :class="priorityClass">
+  <tr :class="statusClass">
     <td @click="handleComplete">
-      <div class="pointer">
+      <div class="checkboxContainer">
         <svg
           class="checkIcon"
           :class="[todo.completed ? 'check' : 'uncheck']"
@@ -12,15 +12,15 @@
           <rect width="15" height="15" />
           <polyline v-if="todo.completed" points="2.4,8.3 5.7,11.9 12.3,3.5 " />
         </svg>
-        {{priorityHandler}}
+        <div :class="priorityClass" class="priorityTag">{{priorityHandler}}</div>
       </div>
     </td>
     <td>{{todo.category}}</td>
     <td>{{todo.title}}</td>
     <td>{{todo.limit}}</td>
     <td class="rightAlign">{{dateRemain}}</td>
-    <td class="buttonTd">
-      <div class="buttonWrapper">
+    <td class="tdButtonCell">
+      <div class="tdButtonWrapper">
         <button @click="toggleModal">{{$t('table.buttonEdit')}}</button>
         <button @click="handleDelete">X</button>
       </div>
@@ -66,17 +66,18 @@ export default {
       );
     },
     priorityClass() {
-      if (this.todo.completed) {
-        return "completed";
-      } else if (this.countDown < 0) {
-        return "passed";
-      } else {
-        return this.todo.priority === 0
-          ? "priorityLow"
-          : this.todo.priority === 1
-          ? "priorityMid"
-          : "priorityHigh";
-      }
+      return this.todo.priority === 0
+        ? "priorityLow"
+        : this.todo.priority === 1
+        ? "priorityMid"
+        : "priorityHigh";
+    },
+    statusClass() {
+      return this.todo.completed
+        ? "completed"
+        : this.countDown < 0
+        ? "passed"
+        : "";
     },
     dateRemain() {
       return this.countDown > 0

@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    theme: 'classic',
     today: new Date(),
     todayRendered: {},
     reverse: false,
@@ -141,6 +142,9 @@ export default new Vuex.Store({
         commit('resetFilter', payload)
       }
       commit('filterFunction', payload)
+    },
+    setTheme({ commit }, payload) {
+      commit('setTheme', payload)
     }
   },
   mutations: {
@@ -186,6 +190,9 @@ export default new Vuex.Store({
         state.todos.sort((a, b) => (a[payload] < b[payload] ? x : y))
           .sort(done => (done.completed ? 1 : -1))
       }
+    },
+    setTheme(state, payload) {
+      state.theme = payload;
     }
   }
 })

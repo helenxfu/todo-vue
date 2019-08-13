@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 30px;
-  border-bottom: 2px solid $header-border;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
 
   h1 {
     font-size: 25px;
@@ -14,9 +15,13 @@
     min-width: 122px;
   }
   .borderLeft {
-    border-left: 1px solid $header-lang-border;
+    border-left-width: 1px;
+    border-left-style: solid;
   }
-  button:hover {
-    color: $header-lang-hover;
+  button {
+    transition: color 0.5s;
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
