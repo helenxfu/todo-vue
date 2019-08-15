@@ -28,22 +28,14 @@
   }
   .status {
     margin-top: 20px;
-  }
-  h3 {
-    font-size: 17px;
-    position: relative;
-    margin: 20px;
-    width: 130px;
-    text-align: left;
-  }
-  span {
-    position: absolute;
-    bottom: -7px;
-    right: 0;
-    font-size: 40px;
-  }
-  .noTasksText {
-    font-size: 20px;
+    font-size: 18px;
+    h3 {
+      font-size: 17px;
+      margin-top: 5px;
+    }
+    p {
+      font-weight: 900;
+    }
   }
   h4 {
     margin-top: 20px;

@@ -1,8 +1,9 @@
 .legend {
+  margin: 10px 0;
   display: flex;
-  margin: 15px 0 5px;
-  flex-wrap: wrap;
-
+}
+.legendColumn {
+  margin: 0 20px 0 10px;
   .legendKey {
     display: flex;
     align-items: center;
@@ -19,8 +20,5 @@
     .circle {
       border-radius: 50%;
     }
-  }
-  .spacing {
-    margin-right: 20px;
   }
 }

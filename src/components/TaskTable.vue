@@ -3,24 +3,34 @@
     <thead>
       <tr>
         <th @click="handleFilter('priority')">
-          {{$t('table.status')}}
-          <span :class="renderClass('priority')">&#9655;</span>
+          <div class="thContainer">
+            <div>{{$t('table.status')}}</div>
+            <div class="triangle" :class="renderClass('priority')">&#9655;</div>
+          </div>
         </th>
         <th @click="handleFilter('category')">
-          {{$t('table.titleCategory')}}
-          <span :class="renderClass('category')">&#9655;</span>
+          <div class="thContainer">
+            <div>{{$t('table.titleCategory')}}</div>
+            <div class="triangle" :class="renderClass('category')">&#9655;</div>
+          </div>
         </th>
         <th @click="handleFilter('title')">
-          {{$t('table.titleName')}}
-          <span :class="renderClass('title')">&#9655;</span>
+          <div class="thContainer">
+            <div>{{$t('table.titleName')}}</div>
+            <div class="triangle" :class="renderClass('title')">&#9655;</div>
+          </div>
         </th>
         <th @click="handleFilter('limit')">
-          {{$t('table.titleLimit')}}
-          <span :class="renderClass('limit')">&#9655;</span>
+          <div class="thContainer">
+            <div>{{$t('table.titleLimit')}}</div>
+            <div class="triangle" :class="renderClass('limit')">&#9655;</div>
+          </div>
         </th>
-        <th class="rightAlign" @click="handleFilter('limit')">
-          {{$t('table.titleRemain')}}
-          <span :class="renderClass('limit')">&#9655;</span>
+        <th @click="handleFilter('limit')">
+          <div class="thContainer">
+            <div>{{$t('table.titleRemain')}}</div>
+            <div class="triangle" :class="renderClass('limit')">&#9655;</div>
+          </div>
         </th>
         <th></th>
       </tr>

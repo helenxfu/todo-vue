@@ -10,7 +10,7 @@ export default new VueI18n({
     en: {
       status: {
         tableCount: 'Task Count', tableRemain: 'Remaining',
-        tableOverdue: 'Overdue', tableComp: 'Completed', tableRate: 'Completion Rate', noTasks: 'No Tasks'
+        tableOverdue: 'Overdue', tableComp: 'Completed', tableRate: 'Completion', noTasks: 'No Tasks'
       },
       menu: {
         titleTasks: 'Tasks', delComp: 'Delete Completed', deleteAll: 'Delete All Tasks', titleTheme: 'Themes', modePastel: 'Pastel Mode', modeDark: 'Dark Mode', modeClassic: 'Classic Mode'
@@ -30,7 +30,7 @@ export default new VueI18n({
     },
     ja: {
       status: {
-        tableCount: 'タスク総数', tableRemain: '残数', tableOverdue: '期日過ぎ', tableComp: '完了済み', tableRate: '完遂率', noTasks: 'タスク無し'
+        tableCount: 'タスク総数', tableRemain: '残数', tableOverdue: '期日過ぎ', tableComp: '完了済み', tableRate: '完遂率', noTasks: 'タスク無'
       },
       menu: {
         titleTasks: 'タスク', delComp: '完了済みタスク削除', deleteAll: '全てのタスクを削除', titleTheme: 'テーマ', modePastel: 'パステルモード', modeDark: 'ダークモード', modeClassic: 'クラシックモード'

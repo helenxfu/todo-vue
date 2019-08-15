@@ -132,28 +132,16 @@
     <div class="statusContainer">
       <div></div>
       <div class="status">
-        <h3>
-          {{$t('status.tableCount')}}
-          <span>{{todoLength}}</span>
-        </h3>
-        <h3>
-          {{$t('status.tableRemain')}}
-          <span>{{todoLength - todoCompleted}}</span>
-        </h3>
-        <h3>
-          {{$t('status.tableOverdue')}}
-          <span :class="{warning : overdue > 0}">{{overdue}}</span>
-        </h3>
-        <h3>
-          {{$t('status.tableComp')}}
-          <span>{{todoCompleted}}</span>
-        </h3>
-        <h3>
-          {{$t('status.tableRate')}}
-          <span
-            :class="{noTasksText : todoLength === 0}"
-          >{{completionRate}}</span>
-        </h3>
+        <h3>{{$t('status.tableCount')}}</h3>
+        <p>{{todoLength}}</p>
+        <h3>{{$t('status.tableRemain')}}</h3>
+        <p>{{todoLength - todoCompleted}}</p>
+        <h3>{{$t('status.tableOverdue')}}</h3>
+        <p :class="{warning : overdue > 0}">{{overdue}}</p>
+        <h3>{{$t('status.tableComp')}}</h3>
+        <p>{{todoCompleted}}</p>
+        <h3>{{$t('status.tableRate')}}</h3>
+        <p>{{completionRate}}</p>
       </div>
       <div></div>
     </div>

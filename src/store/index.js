@@ -19,7 +19,7 @@ export default new Vuex.Store({
         title: "Java intro",
         priority: 2,
         category: "Java",
-        limit: "2019-08-14",
+        limit: "2020-08-14",
         completed: false
       },
       {
@@ -27,7 +27,7 @@ export default new Vuex.Store({
         title: "Vue Todo",
         priority: 2,
         category: "Vue",
-        limit: "2019-07-11",
+        limit: "2019-08-14",
         completed: false
       },
       {
@@ -35,7 +35,7 @@ export default new Vuex.Store({
         title: "React course",
         priority: 1,
         category: "React",
-        limit: "2019-07-22",
+        limit: "2019-12-20",
         completed: false
       },
       {
@@ -43,7 +43,7 @@ export default new Vuex.Store({
         title: "React Calendar",
         priority: 1,
         category: "React",
-        limit: "2019-07-30",
+        limit: "2019-11-30",
         completed: false
       },
       {
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         title: "CS50",
         priority: 0,
         category: "YouTube",
-        limit: "2019-09-12",
+        limit: "2020-09-12",
         completed: false
       },
       {
@@ -59,7 +59,7 @@ export default new Vuex.Store({
         title: "Illustrator crashcourse",
         priority: 0,
         category: "Adobe",
-        limit: "2019-08-22",
+        limit: "2020-08-22",
         completed: false
       },
       {
@@ -67,7 +67,7 @@ export default new Vuex.Store({
         title: "InDesign",
         priority: 0,
         category: "Adobe",
-        limit: "2019-09-02",
+        limit: "2021-09-02",
         completed: false
       }
     ]

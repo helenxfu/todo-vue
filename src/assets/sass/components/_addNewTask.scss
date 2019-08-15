@@ -2,6 +2,7 @@
   form {
     display: flex;
     margin-bottom: 10px;
+    flex-wrap: wrap;
   }
   label {
     font-size: 12px;
@@ -10,29 +11,26 @@
     white-space: nowrap;
   }
   .grow {
-    flex-grow: 2;
+    flex-grow: 1;
   }
-  .priorityContainer {
-    padding: 0 8px;
+  .formPaddingRight {
+    padding-right: 8px;
   }
   .priorityButtons {
     margin-top: 3px;
     min-width: 132px;
   }
-  input[type="date"] {
-    padding: 2.5px;
-  }
-
   input[type="submit"],
   input[type="reset"] {
-    width: 50px;
-    height: 22px;
+    width: 80px;
+    height: 30px;
     border-radius: 7px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
   .resetSubmitInput {
     display: flex;
     min-width: 100px;
+    min-height: 46px;
     align-items: flex-end;
   }
 }

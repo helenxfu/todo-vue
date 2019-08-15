@@ -7,7 +7,7 @@
   width: 100%;
   overflow: auto;
   animation-name: modalOpen;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 
   .modal {
     border-radius: 10px;
@@ -20,8 +20,7 @@
     margin-top: -190px;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.5);
     animation-name: modalScale;
-    animation-duration: 0.7s;
-    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
   }
   .modalHeader {
     display: flex;
@@ -52,7 +51,7 @@
   input[type="submit"],
   input[type="reset"] {
     flex-grow: 2;
-    height: 30px;
+    height: 37px;
     font-size: 14px;
   }
 

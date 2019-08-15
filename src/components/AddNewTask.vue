@@ -23,12 +23,12 @@
           :placeholder="$t('forms.inputCategory')"
         />
       </div>
-      <div>
+      <div class="formPaddingRight">
         <label>{{$t('table.titleLimit')}}</label>
         <br />
         <input v-model="limit" type="date" name="limit" required />
       </div>
-      <div class="priorityContainer">
+      <div class="formPaddingRight">
         <label>{{$t('forms.titlePriority')}}</label>
         <div class="priorityButtons">
           <label>

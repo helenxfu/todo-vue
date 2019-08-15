@@ -62,11 +62,13 @@
     h3 {
       color: $menu-title-a;
     }
-    span {
-      color: $menu-span-a;
-    }
-    .warning {
-      color: $menu-span-warn-a;
+    .status {
+      p {
+        color: $menu-span-a;
+      }
+      .warning {
+        color: $menu-span-warn-a;
+      }
     }
     .socialLinks {
       filter: invert(70%);

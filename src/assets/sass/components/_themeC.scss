@@ -62,12 +62,15 @@
     h3 {
       color: $menu-title-c;
     }
-    span {
-      color: $menu-span-c;
+    .status {
+      p {
+        color: $menu-span-c;
+      }
+      .warning {
+        color: $menu-span-warn-c;
+      }
     }
-    .warning {
-      color: $menu-span-warn-c;
-    }
+
     svg {
       .shadowColor {
         stop-color: $bottle-shadow-c;
