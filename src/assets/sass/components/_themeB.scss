@@ -171,4 +171,11 @@
     stroke: $uncheck-stroke-b;
     fill: $uncheck-fill-b;
   }
+  .cross {
+    stroke: $pencil-b;
+  }
+  .pencil {
+    fill: $pencil-b;
+    stroke: $pencil-b;
+  }
 }

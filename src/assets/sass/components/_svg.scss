@@ -1,6 +1,7 @@
 svg {
   transition: all 0.5s linear;
 }
+
 .emptySvg {
   margin: 0 auto;
   width: 200px;
@@ -41,4 +42,46 @@ svg {
   .task {
     stroke-width: 8px;
   }
+}
+
+.logo {
+  width: 100px;
+  margin: 0 auto;
+  svg {
+    .shadow {
+      fill: url(#linear-gradient);
+    }
+    .task,
+    .no-fill {
+      fill: none;
+    }
+    .no-fill {
+      stroke-width: 3px;
+    }
+    .cls-2,
+    .bottle-line-1,
+    .task {
+      stroke-miterlimit: 10;
+    }
+    .bottle-line-1 {
+      stroke-linecap: round;
+    }
+    .bottle-line-2 {
+      stroke-linejoin: round;
+    }
+    .task {
+      stroke-width: 8px;
+    }
+  }
+}
+
+.cross {
+  fill: none;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-width: 3px;
+}
+.pencil {
+  stroke-miterlimit: 10;
+  stroke-width: 0.5px;
 }

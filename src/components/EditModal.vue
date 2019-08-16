@@ -3,7 +3,13 @@
     <div class="modal" @click.stop>
       <div class="modalHeader">
         <h2>{{$t('forms.titleEditData')}}</h2>
-        <button class="xButton" @click="$emit('close')">X</button>
+        <button class="xButton" @click="$emit('close')">
+          <svg style="width: 20px" viewBox="0 0 18.17 18.17">
+            <title>cross</title>
+            <line class="cross" x1="1.5" y1="1.5" x2="16.67" y2="16.67" />
+            <line class="cross" x1="1.5" y1="16.67" x2="16.67" y2="1.5" />
+          </svg>
+        </button>
       </div>
       <div>
         <form @submit.prevent="handleEditTodo()">

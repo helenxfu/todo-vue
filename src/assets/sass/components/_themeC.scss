@@ -113,6 +113,7 @@
       stroke: $task-low-c;
     }
   }
+
   table {
     background-color: $menu-background-c;
     th {
@@ -167,5 +168,12 @@
   .uncheck {
     stroke: $uncheck-stroke-c;
     fill: $uncheck-fill-c;
+  }
+  .cross {
+    stroke: $pencil-c;
+  }
+  .pencil {
+    fill: $pencil-c;
+    stroke: $pencil-c;
   }
 }

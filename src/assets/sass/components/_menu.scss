@@ -57,34 +57,4 @@
     padding: 5px;
     cursor: pointer;
   }
-  .logo {
-    width: 100px;
-    margin: 0 auto;
-    svg {
-      .shadow {
-        fill: url(#linear-gradient);
-      }
-      .task,
-      .no-fill {
-        fill: none;
-      }
-      .no-fill {
-        stroke-width: 3px;
-      }
-      .cls-2,
-      .bottle-line-1,
-      .task {
-        stroke-miterlimit: 10;
-      }
-      .bottle-line-1 {
-        stroke-linecap: round;
-      }
-      .bottle-line-2 {
-        stroke-linejoin: round;
-      }
-      .task {
-        stroke-width: 8px;
-      }
-    }
-  }
 }

@@ -125,6 +125,7 @@ td {
   border-width: 1px;
   border-style: solid;
   padding: 2px 2px;
+  // height: 100px; // what!?!?!
 }
 .tdButtonCell {
   padding: 0;
@@ -135,17 +136,17 @@ td {
   justify-content: center;
 }
 .tdButtonWrapper button {
-  padding: px;
   border-radius: 4px;
 }
 .checkboxContainer {
   cursor: pointer;
   padding-left: 5px;
   display: flex;
-  align-content: center;
+  align-items: center;
 }
 .checkIcon {
   width: 15px;
+  height: 15px;
   margin-right: 2px;
   margin-bottom: 1px;
   stroke-width: 2;
