@@ -196,6 +196,9 @@
 </template>
 
 <script>
+// cool!
+// I would probably put the SVG part of this in a different folder (same with the one that's in the Menu) and rename it like BottleSVGIcon
+// then use it in here like <BottleSVGIcon/> so you can read what it is, and this file would be much easier to edit
 export default {
   name: "EmptyTask"
 };

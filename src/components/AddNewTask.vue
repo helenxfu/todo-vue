@@ -71,6 +71,7 @@ export default {
     ...mapActions(["addTodo"]),
     handleAddTodo() {
       const newTodo = {
+        // you can also use Date.now() for a unique ID!
         id: this.title + Math.floor(Math.random() * 100),
         title: this.title,
         priority: Number(this.priority),
@@ -84,6 +85,9 @@ export default {
   },
   created() {
     this.limit = this.dateToday;
+    // I think if you use the simpler date-fns function you could avoid this step
+    // import {format} from 'date-fns'
+    // limit: format(Date.now(), "YYYY/MM/DD")
   }
 };
 </script>
