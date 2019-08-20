@@ -2,6 +2,10 @@
   <table>
     <thead>
       <tr>
+        <!-- looks very repetitive, how about using a v-for here to abstract this list? -->
+        <!-- also prevents typos... -->
+        <!-- something like v-for(item in ['priority','category',...]) -->
+        <!-- or for more customization, v-for(item in [{filter: 'priority', class:'triangle', tableCategory:'status'}, ...]) -->
         <th @click="handleFilter('priority')">
           <div class="thContainer">
             <div>{{$t('table.status')}}</div>
@@ -27,6 +31,7 @@
           </div>
         </th>
         <th @click="handleFilter('limit')">
+          <!-- is this a typo? should it be 'remain'? -->
           <div class="thContainer">
             <div>{{$t('table.titleRemain')}}</div>
             <div class="triangle" :class="renderClass('limit')">&#9655;</div>
