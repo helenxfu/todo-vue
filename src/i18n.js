@@ -7,7 +7,6 @@ export default new VueI18n({
   locale: 'en',
   fallbackLocale: 'en',
   messages: {
-    // wowza!
     en: {
       status: {
         tableCount: 'Task Count',

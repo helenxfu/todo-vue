@@ -23,12 +23,12 @@
           :placeholder="$t('forms.inputCategory')"
         />
       </div>
-      <div class="formPaddingRight">
+      <div>
         <label>{{$t('table.titleLimit')}}</label>
         <br />
         <input v-model="limit" type="date" name="limit" required />
       </div>
-      <div class="formPaddingRight">
+      <div>
         <label>{{$t('forms.titlePriority')}}</label>
         <div class="priorityButtons">
           <label>
@@ -71,8 +71,7 @@ export default {
     ...mapActions(["addTodo"]),
     handleAddTodo() {
       const newTodo = {
-        // you can also use Date.now() for a unique ID!
-        id: this.title + Math.floor(Math.random() * 100),
+        id: Date.now(),
         title: this.title,
         priority: Number(this.priority),
         category: this.category,
@@ -85,9 +84,6 @@ export default {
   },
   created() {
     this.limit = this.dateToday;
-    // I think if you use the simpler date-fns function you could avoid this step
-    // import {format} from 'date-fns'
-    // limit: format(Date.now(), "YYYY/MM/DD")
   }
 };
 </script>

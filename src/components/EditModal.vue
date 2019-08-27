@@ -4,11 +4,7 @@
       <div class="modalHeader">
         <h2>{{$t('forms.titleEditData')}}</h2>
         <button class="xButton" @click="$emit('close')">
-          <svg style="width: 20px" viewBox="0 0 18.17 18.17">
-            <title>cross</title>
-            <line class="cross" x1="1.5" y1="1.5" x2="16.67" y2="16.67" />
-            <line class="cross" x1="1.5" y1="16.67" x2="16.67" y2="1.5" />
-          </svg>
+          <CrossSVGIcon />
         </button>
       </div>
       <div>
@@ -68,7 +64,9 @@
 </template>
 
 <script>
+import CrossSVGIcon from "./SVG/CrossSVGIcon";
 import { mapActions } from "vuex";
+
 export default {
   name: "EditModal",
   props: {
@@ -80,6 +78,9 @@ export default {
       type: Number,
       default: 0
     }
+  },
+  components: {
+    CrossSVGIcon
   },
   data() {
     // return {
@@ -99,11 +100,8 @@ export default {
     // return JSON.parse(JSON.stringify(this.todo))
   },
   watch: {
-    // 😲😲😲
     // eslint-disable-next-line no-unused-vars
     todo(newVal, oldVal) {
-      // looks a little repetitive
-      // I wonder if there's a way to be easier on your fingers?
       this.title = this.todo.title;
       this.priority = this.todo.priority;
       this.category = this.todo.category;

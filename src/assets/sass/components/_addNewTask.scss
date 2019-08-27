@@ -3,6 +3,9 @@
     display: flex;
     margin-bottom: 10px;
     flex-wrap: wrap;
+    div {
+      margin-right: 10px;
+    }
   }
   label {
     font-size: 12px;
@@ -12,9 +15,6 @@
   }
   .grow {
     flex-grow: 1;
-  }
-  .formPaddingRight {
-    padding-right: 8px;
   }
   .priorityButtons {
     margin-top: 3px;
@@ -26,6 +26,9 @@
     height: 30px;
     border-radius: 7px;
     margin-bottom: 2px;
+  }
+  input[type="reset"] {
+    margin-right: 5px;
   }
   .resetSubmitInput {
     display: flex;

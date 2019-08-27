@@ -129,15 +129,16 @@ td {
 }
 .tdButtonCell {
   padding: 0;
+  .tdButtonWrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+  button {
+    border-radius: 4px;
+  }
 }
-.tdButtonWrapper {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
-.tdButtonWrapper button {
-  border-radius: 4px;
-}
+
 .checkboxContainer {
   cursor: pointer;
   padding-left: 5px;

@@ -2,39 +2,15 @@
   <table>
     <thead>
       <tr>
-        <!-- looks very repetitive, how about using a v-for here to abstract this list? -->
-        <!-- also prevents typos... -->
-        <!-- something like v-for(item in ['priority','category',...]) -->
-        <!-- or for more customization, v-for(item in [{filter: 'priority', class:'triangle', tableCategory:'status'}, ...]) -->
-        <th @click="handleFilter('priority')">
+        <!-- 'remain' and Limit have the same ordering, therefore the same filter -->
+        <th
+          v-for="(tableHeading, index) in tableHeadings"
+          :key="index"
+          @click="handleFilter(tableHeading.filter)"
+        >
           <div class="thContainer">
-            <div>{{$t('table.status')}}</div>
-            <div class="triangle" :class="renderClass('priority')">&#9655;</div>
-          </div>
-        </th>
-        <th @click="handleFilter('category')">
-          <div class="thContainer">
-            <div>{{$t('table.titleCategory')}}</div>
-            <div class="triangle" :class="renderClass('category')">&#9655;</div>
-          </div>
-        </th>
-        <th @click="handleFilter('title')">
-          <div class="thContainer">
-            <div>{{$t('table.titleName')}}</div>
-            <div class="triangle" :class="renderClass('title')">&#9655;</div>
-          </div>
-        </th>
-        <th @click="handleFilter('limit')">
-          <div class="thContainer">
-            <div>{{$t('table.titleLimit')}}</div>
-            <div class="triangle" :class="renderClass('limit')">&#9655;</div>
-          </div>
-        </th>
-        <th @click="handleFilter('limit')">
-          <!-- is this a typo? should it be 'remain'? -->
-          <div class="thContainer">
-            <div>{{$t('table.titleRemain')}}</div>
-            <div class="triangle" :class="renderClass('limit')">&#9655;</div>
+            <div>{{$t(tableHeading.text)}}</div>
+            <div class="triangle" :class="renderClass(tableHeading.renderClass)">&#9655;</div>
           </div>
         </th>
         <th></th>
@@ -72,6 +48,21 @@ export default {
       }
       return "deactivate";
     }
+  },
+  data() {
+    return {
+      tableHeadings: [
+        { filter: "priority", text: "table.status", renderClass: "priority" },
+        {
+          filter: "category",
+          text: "table.titleCategory",
+          renderClass: "category"
+        },
+        { filter: "title", text: "table.titleName", renderClass: "title" },
+        { filter: "limit", text: "table.titleLimit", renderClass: "limit" },
+        { filter: "limit", text: "table.titleRemain", renderClass: "limit" }
+      ]
+    };
   }
 };
 </script>

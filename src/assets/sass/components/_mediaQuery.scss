@@ -25,6 +25,9 @@
   .addNewTask {
     form {
       flex-direction: column;
+      div {
+        margin: 0;
+      }
     }
     input[type="date"] {
       width: 100%;
