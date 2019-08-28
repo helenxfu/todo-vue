@@ -62,8 +62,9 @@ export default {
         : this.$t("table.priorityHigh");
     },
     countDown() {
+      const MS_IN_ONE_DAY = 1000 * 60 * 60 * 24;
       return (
-        (new Date(this.todo.limit) - this.$store.state.todayRendered) / 86400000
+        (new Date(this.todo.limit) - this.$store.state.today) / MS_IN_ONE_DAY
       );
     },
     priorityClass() {

@@ -7,8 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     theme: 'classic',
-    today: new Date(),
-    todayRendered: {},
+    today: "", //renders today through todayRendered method on create App.vue to format today to the 0AM time and store the value here
     reverse: false,
     filterBy: {
       priority: false,
@@ -73,6 +72,46 @@ export default new Vuex.Store({
         limit: '2021-09-02',
         completed: false,
       },
+      {
+        id: 7,
+        title: 'Java intro',
+        priority: 2,
+        category: 'AAA',
+        limit: '2020-08-14',
+        completed: false,
+      },
+      {
+        id: 8,
+        title: 'AAA',
+        priority: 0,
+        category: 'AAA',
+        limit: '2020-02-14',
+        completed: false,
+      },
+      {
+        id: 9,
+        title: 'AAB',
+        priority: 2,
+        category: 'AAA',
+        limit: '2020-03-14',
+        completed: false,
+      },
+      {
+        id: 10,
+        title: 'BBB',
+        priority: 2,
+        category: 'AAA',
+        limit: '2020-01-14',
+        completed: false,
+      },
+      {
+        id: 11,
+        title: 'AAB',
+        priority: 1,
+        category: 'BBB',
+        limit: '2020-02-14',
+        completed: false,
+      },
     ],
   },
   getters: {
@@ -87,15 +126,8 @@ export default new Vuex.Store({
         ? i18n.t('status.noTasks')
         : Math.round((getters.todoCompleted / getters.todoLength) * 100) + '%';
     },
-    dateToday(state) {
-      // this function seems like it doesn't need to use state,
-      // why not just use new Date() (or Date.now() which is more readable) every time?
-      // you can also use a library for common tasks like this,
-      // check out date-fns https://date-fns.org/
-      // import {format} from 'date-fns'
-      // const todayFormatted = format(Date.now(), "YYYY/MM/DD")
-
-      let today = state.today;
+    dateToday() {
+      let today = new Date();
       const yyyy = today.getFullYear();
       let mm = today.getMonth() + 1;
       let dd = today.getDate();
@@ -110,20 +142,10 @@ export default new Vuex.Store({
     },
     overdue(state) {
       let count = 0;
-      // looks like you can use const instead of let for 'today' below (always use const unless you must use let)
-      let today = state.todayRendered; // I'm confused -- todayRendered starts as an empty object, but you're using it in a subtraction below? maybe it should start as null? (null means 'a human intentionally left this blank')
-
-      // I don't use for loops, they block the main thread in javascript,
-      // prefer to use Array methods which can run in parallel
-      // (because array operations are operations on independent pieces of an array, they're guaranteed not to interact;
-      // in for loops, each iteration might affect the next iteration, so they *must* be run in order):
+      let today = state.today;
       state.todos.forEach(todo => {
-        const countDown = (new Date(todo.limit) - today) / 86400000; // what's 86400000?
-        // might be easier to read like 24 * 60 * 60 * 1000 or something
-        // or even better,
-        // const ONE_DAY_OF_MS = 24 * 60 * 60 * 1000
-
-        // I like this short if condition "countDown < 0" it's very clear and readable
+        const MS_IN_ONE_DAY = 1000 * 60 * 60 * 24;
+        const countDown = (new Date(todo.limit) - today) / MS_IN_ONE_DAY;
         if (countDown < 0) count++;
       });
       return count;
@@ -131,11 +153,11 @@ export default new Vuex.Store({
   },
   actions: {
     todayRendered({ commit, getters }) {
-      const payload = new Date(getters.dateToday);
+      const payload = new Date(getters.dateToday); //resets Date value to 0:00AM
       commit('todayRendered', payload);
     },
     deleteAll({ commit }) {
-      const confirmed = confirm('Are you sure you want to delete all?');
+      const confirmed = confirm(i18n.t('text.confirm'));
       if (confirmed) {
         commit('deleteAll');
       }
@@ -156,7 +178,9 @@ export default new Vuex.Store({
       commit('toggleComplete', index);
     },
     filterFunction({ commit, state }, payload) {
-      // not sure what's going on here, maybe a good place for some comments explaining this
+      // if the user clicks the same filter a second time, it would change the reverse state only.
+      // if user clicks a different filter, it would resetFilter and reset reverse state
+      // finally run filterFunction to filter tasks. 
       if (state.filterBy[payload] === true) {
         state.reverse = !state.reverse;
       } else {
@@ -170,7 +194,7 @@ export default new Vuex.Store({
   },
   mutations: {
     todayRendered: (state, payload) => {
-      state.todayRendered = payload;
+      state.today = payload;
     },
     deleteTodo(state, index) {
       state.todos.splice(index, 1);
@@ -185,12 +209,13 @@ export default new Vuex.Store({
       state.todos.push(payload);
     },
     editTodo: (state, payload) => {
-      state.todos.splice(payload.index, 1, payload.changeTodo);
+      state.todos.splice(payload.index, 1, payload.todoUpdate);
     },
     toggleComplete: (state, index) => {
       state.todos[index].completed = !state.todos[index].completed;
     },
     resetFilter: (state, payload) => {
+      //reset all filters in state.filterBy and turn on the new selected filter
       Object.keys(state.filterBy).forEach(element => {
         state.filterBy[element] = false;
       });
@@ -198,34 +223,14 @@ export default new Vuex.Store({
       state.filterBy[payload] = true;
     },
     filterFunction: (state, payload) => {
-      // confusing variable names, what is x, what is y?
-      // let x = 1;
-      // let y = -1;
-      // could do this instead:
-      // const [x,y] = state.reverse? [-1,1] : [1,-1]
-      // but if one is always the opposite of the other, do you really need both? (redundant?)
-      // if (state.reverse) {
-      //   [x, y] = [y, x]
-      // }
-      const { reverse } = state;
-      if (payload === 'limit') {
+      const [x, y] = state.reverse ? [-1, 1] : [1, -1]
+      if (payload === "limit") {
         state.todos
-          // for Array.sort you can use any value, not just 1 or -1 -- positive or negative or 0 is the key
-          // so you can even just subtract one value from the other:
-          .sort(
-            (a, b) =>
-              // (check: not sure I'm subtracting the right one first)
-              new Date((reverse ? b : a).limit) -
-              new Date((reverse ? a : b).limit),
-          )
-          .sort(done => (done.completed ? 1 : -1));
+          .sort((a, b) => (new Date(a.limit) < new Date(b.limit) ? x : y))
+          .sort(done => (done.completed ? 1 : -1))
       } else {
-        state.todos
-          .sort(
-            // (check: not sure I'm subtracting the right one first)
-            (a, b) => (reverse ? a : b)[payload] - (reverse ? b : a)[payload],
-          )
-          .sort(done => (done.completed ? 1 : -1));
+        state.todos.sort((a, b) => (a[payload] < b[payload] ? x : y))
+          .sort(done => (done.completed ? 1 : -1))
       }
     },
     setTheme(state, payload) {

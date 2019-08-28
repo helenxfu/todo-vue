@@ -83,50 +83,27 @@ export default {
     CrossSVGIcon
   },
   data() {
-    // return {
-    //   title: this.todo.title,
-    //   priority: this.todo.priority,
-    //   category: this.todo.category,
-    //   limit: this.todo.limit
-    // };
-    // does this work?
-    return this.todo;
-    // otherwise, (shallow-)clone the object?
-    // return {...this.todo}
-    // if the object has nested object inside, you'd have to deep clone:
-    // import {cloneDeep} from 'lodash'
-    // return cloneDeep(this.todo)
-    // if you don't care about performance you can hack a cloneDeep together real quick:
-    // return JSON.parse(JSON.stringify(this.todo))
+    return { ...this.todo };
   },
   watch: {
+    // watch for changes when order is resorted
     // eslint-disable-next-line no-unused-vars
     todo(newVal, oldVal) {
-      this.title = this.todo.title;
-      this.priority = this.todo.priority;
-      this.category = this.todo.category;
-      this.limit = this.todo.limit;
+      const { title, priority, category, limit } = this.todo;
+      [this.title, this.priority, this.category, this.limit] = [
+        title,
+        priority,
+        category,
+        limit
+      ];
     }
   },
   methods: {
     ...mapActions(["editTodo"]),
     handleEditTodo() {
-      // changeTodo sounds like a function name (verb), do you mean changedTodo? updatedTodo?
-      // const changeTodo = {
-      // repetitive, is there a better way?
-      //   id: this.todo.id,
-      //   title: this.title,
-      //   priority: this.priority,
-      //   category: this.category,
-      //   limit: this.limit,
-      //   completed: this.todo.completed
-      // };
-      // maybe...? not sure if this works
       const { title, priority, category, limit, index } = this;
-      // a tiny bit cleaner (if it works)
-      const changedTodo = { ...this.todo, title, priority, category, limit };
-
-      const payload = { changedTodo, index };
+      const todoUpdate = { ...this.todo, title, priority, category, limit };
+      const payload = { todoUpdate, index };
       this.editTodo(payload);
       this.$emit("close");
     }

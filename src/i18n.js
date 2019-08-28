@@ -55,6 +55,7 @@ export default new VueI18n({
         none: 'Please add tasks from the form above.',
         passed: 'Overdue',
         completed: 'Completed',
+        confirm: 'Are you sure you want to delete all tasks?'
       },
     },
     ja: {
@@ -105,6 +106,7 @@ export default new VueI18n({
         none: '上記フォームからタスクを入力してください',
         passed: '期限過ぎ',
         completed: '完',
+        confirm: '全タスクを削除してもよろしいですか？'
       },
     },
     zh: {
@@ -155,6 +157,7 @@ export default new VueI18n({
         none: '请追加项目',
         passed: '过期',
         completed: '完',
+        confirm: '确定要消除所有任务吗？'
       },
     },
   },
