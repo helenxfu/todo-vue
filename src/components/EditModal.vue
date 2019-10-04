@@ -1,9 +1,9 @@
 <template>
   <div class="modalMask" @click="$emit('close')">
-    <div class="modal" @click.stop>
+    <div class="modal" style="top: calc(50% - 193px)" @click.stop>
       <div class="modalHeader">
         <h2>{{$t('forms.titleEditData')}}</h2>
-        <button class="xButton" @click="$emit('close')">
+        <button @click="$emit('close')">
           <CrossSVGIcon />
         </button>
       </div>
@@ -40,15 +40,15 @@
             <label>{{$t('forms.titlePriority')}}</label>
             <div class="priorityButtons">
               <label>
-                <input v-model="priority" type="radio" name="priority" value="0" checked required />
+                <input v-model="priority" type="radio" name="priority" :value="0" checked required />
                 {{$t('table.priorityLow')}}
               </label>
               <label>
-                <input v-model="priority" type="radio" name="priority" value="1" />
+                <input v-model="priority" type="radio" name="priority" :value="1" />
                 {{$t('table.priorityMid')}}
               </label>
               <label>
-                <input v-model="priority" type="radio" name="priority" value="2" />
+                <input v-model="priority" type="radio" name="priority" :value="2" />
                 {{$t('table.priorityHigh')}}
               </label>
             </div>
@@ -86,13 +86,11 @@ export default {
     return { ...this.todo };
   },
   watch: {
-    // watch for changes when order is resorted
-    // eslint-disable-next-line no-unused-vars
-    todo(newVal, oldVal) {
+    todo() {
       const { title, priority, category, limit } = this.todo;
       [this.title, this.priority, this.category, this.limit] = [
         title,
-        priority,
+        Number(priority),
         category,
         limit
       ];
@@ -101,10 +99,9 @@ export default {
   methods: {
     ...mapActions(["editTodo"]),
     handleEditTodo() {
-      const { title, priority, category, limit, index } = this;
+      const { title, priority, category, limit } = this;
       const todoUpdate = { ...this.todo, title, priority, category, limit };
-      const payload = { todoUpdate, index };
-      this.editTodo(payload);
+      this.editTodo(todoUpdate);
       this.$emit("close");
     }
   }

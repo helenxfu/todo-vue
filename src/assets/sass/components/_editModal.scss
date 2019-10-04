@@ -16,8 +16,6 @@
     padding: 20px;
     position: absolute;
     left: calc(50% - 150px);
-    top: 50%;
-    margin-top: -190px;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.5);
     animation-name: modalScale;
     animation-duration: 0.5s;
@@ -30,8 +28,13 @@
   h2 {
     font-size: 20px;
   }
-  .xButton {
+  button {
     padding: 0;
+    margin: 0;
+    &:hover {
+      filter: none;
+      background-color: transparent;
+    }
   }
   form > div {
     margin-top: 15px;
@@ -48,10 +51,55 @@
     display: flex;
   }
   input[type="submit"],
-  input[type="reset"] {
-    flex-grow: 2;
+  input[type="reset"],
+  input[type="text"] {
     height: 37px;
     font-size: 14px;
+    width: 100%;
+  }
+  input[type="submit"]:disabled {
+    cursor: initial;
+    &:hover {
+      filter: none;
+    }
+  }
+  input[name="submitLoginRegister"] {
+    margin-top: 10px;
+  }
+  .toggleLogin {
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .signInWith {
+    border-top-width: 1px;
+    border-top-style: solid;
+    padding-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    margin: 15px 0 5px;
+  }
+  .emailCheckFail {
+    font-size: 12px;
+  }
+  .errorMessage {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .agreement {
+    font-size: 10px;
+    text-align: center;
+    white-space: pre-wrap;
+  }
+
+  .validationContainer {
+    white-space: pre-wrap;
+    margin-left: 15px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
   }
 
   @keyframes modalOpen {

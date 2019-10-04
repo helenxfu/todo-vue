@@ -13,17 +13,37 @@
   .bodyContainer {
     background-color: $body-container-c;
   }
-  input[type="reset"] {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+  input[type="reset"],
+  input[name="register"],
+  input[name="logout"],
+  input[name="clear-text"] {
     background-color: $input-button-reset-c;
   }
 
-  input[type="submit"] {
+  input[type="submit"],
+  input[name="login"] {
     background-color: $input-button-submit-c;
+  }
+  input[type="submit"]:disabled {
+    background-color: $input-button-noSubmit-c;
   }
   .modalMask {
     background-color: $modal-mask-c;
     .modal {
       background-color: $modal-background-c;
+    }
+    .toggleLogin {
+      color: $sub-title-c;
+    }
+    .emailCheckFail {
+      color: crimson;
     }
   }
   .headerContainer {
@@ -92,6 +112,9 @@
       }
     }
   }
+  .socialLoginContainer {
+    filter: invert(70%);
+  }
   .emptySvg {
     .shadowColor {
       stop-color: $bottle-shadow-c;
@@ -158,8 +181,13 @@
   .priorityHigh {
     background-color: $priority-high-c;
   }
-  input {
+  input,
+  .loginInputContainer {
     border-color: $input-border-c;
+    background-color: white;
+  }
+  .signInWith {
+    border-top-color: $input-border-c;
   }
   .check {
     stroke: $check-stroke-c;
@@ -175,5 +203,20 @@
   .pencil {
     fill: $pencil-c;
     stroke: $pencil-c;
+  }
+  .iconColorFill {
+    fill: $icon-color-c;
+  }
+  .iconColorStroke {
+    stroke: $icon-color-c;
+  }
+  .iconColorUnstroke {
+    stroke: rgb(196, 196, 196);
+  }
+  .validColor {
+    color: rgb(22, 122, 153);
+  }
+  .invalidColor {
+    color: rgb(160, 160, 160);
   }
 }

@@ -94,10 +94,13 @@ export default {
       this.hidden = !this.hidden;
     },
     handleDelete() {
-      this.$store.dispatch("deleteTodo", this.index);
+      this.$store.dispatch("deleteTodo", this.todo.id);
     },
     handleComplete() {
-      this.$store.dispatch("toggleComplete", this.index);
+      this.$store.dispatch("toggleComplete", {
+        id: this.todo.id,
+        completed: this.todo.completed
+      });
     }
   }
 };

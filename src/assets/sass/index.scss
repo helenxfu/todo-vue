@@ -98,7 +98,14 @@ input {
 }
 input[type="text"] {
   padding-left: 5px;
+  padding-right: 5px;
   width: 100%;
+}
+input[type="date"],
+input[type="email"],
+input[type="password"] {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 input[type="radio"] {
   height: 1em;
@@ -108,8 +115,38 @@ input[type="radio"] {
 input[type="date"]::-webkit-inner-spin-button {
   display: none;
 }
+.iconMarginRight {
+  margin-right: 8px;
+}
+.iconMarginLeft {
+  margin-left: 8px;
+}
+.iconBlock {
+  display: block;
+  width: 16px;
+}
+.loginInputContainer {
+  display: flex;
+  align-items: center;
+  height: 37px;
+  font-size: 12px;
+  border-width: 1px;
+  border-style: solid;
+  input[type="text"] {
+    height: initial;
+    width: initial;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    border: none;
+    font-size: 14px;
+    flex-grow: 1;
+  }
+}
 input[type="submit"],
-input[type="reset"] {
+input[type="reset"],
+input[type="button"] {
   cursor: pointer;
   transition-property: filter;
   transition-duration: 0.3s;
@@ -121,11 +158,17 @@ input[type="reset"] {
   }
 }
 
+input[type="button"] {
+  min-width: 80px;
+  height: 30px;
+  border-radius: 7px;
+  margin-bottom: 2px;
+}
+
 td {
   border-width: 1px;
   border-style: solid;
   padding: 2px 2px;
-  // height: 100px; // what!?!?!
 }
 .tdButtonCell {
   padding: 0;
@@ -152,4 +195,17 @@ td {
   margin-bottom: 1px;
   stroke-width: 2;
   stroke-linecap: round;
+}
+.tableLegend {
+  display: flex;
+  align-items: center;
+}
+.mockWarn {
+  background-color: rgb(255, 216, 212);
+  color: red;
+  border-color: aliceblue;
+  padding: 7px;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
 }

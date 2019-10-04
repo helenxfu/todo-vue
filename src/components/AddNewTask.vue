@@ -1,7 +1,7 @@
 <template>
   <div class="addNewTask">
     <form @submit.prevent="handleAddTodo()">
-      <div class="grow">
+      <div class="grow marginRight">
         <label>{{$t('table.titleName')}}</label>
         <br />
         <input
@@ -13,7 +13,7 @@
         />
       </div>
 
-      <div class="grow">
+      <div class="grow marginRight">
         <label>{{$t('table.titleCategory')}}</label>
         <br />
         <input
@@ -23,24 +23,24 @@
           :placeholder="$t('forms.inputCategory')"
         />
       </div>
-      <div>
+      <div class="marginRight">
         <label>{{$t('table.titleLimit')}}</label>
         <br />
         <input v-model="limit" type="date" name="limit" required />
       </div>
-      <div>
+      <div class="marginRight">
         <label>{{$t('forms.titlePriority')}}</label>
         <div class="priorityButtons">
           <label>
-            <input v-model="priority" type="radio" name="priority" value="0" checked required />
+            <input v-model="priority" type="radio" name="priority" :value="0" checked required />
             {{$t('table.priorityLow')}}
           </label>
           <label>
-            <input v-model="priority" type="radio" name="priority" value="1" />
+            <input v-model="priority" type="radio" name="priority" :value="1" />
             {{$t('table.priorityMid')}}
           </label>
           <label>
-            <input v-model="priority" type="radio" name="priority" value="2" />
+            <input v-model="priority" type="radio" name="priority" :value="2" />
             {{$t('table.priorityHigh')}}
           </label>
         </div>

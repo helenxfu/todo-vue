@@ -5,7 +5,7 @@
     viewBox="0 0 206.89 282.96"
   >
     <defs>
-      <linearGradient x1="131.5" y1="162.92" x2="131.5" y2="271" gradientUnits="userSpaceOnUse">
+      <linearGradient id="linear-gradient" x1="131.5" y1="162.92" x2="131.5" y2="271" gradientUnits="userSpaceOnUse">
         <stop offset="0" class="shadowColor" stop-opacity="0" />
         <stop offset="0.18" class="shadowColor" stop-opacity="0.02" />
         <stop offset="0.33" class="shadowColor" stop-opacity="0.07" />

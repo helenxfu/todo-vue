@@ -22,3 +22,10 @@
     }
   }
 }
+.textFilterContainer {
+  display: flex;
+  flex-grow: 1;
+}
+input[name="text-filter"] {
+  margin-right: 5px;
+}

@@ -13,17 +13,46 @@
   .bodyContainer {
     background-color: $body-container-b;
   }
-  input[type="reset"] {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: white;
+    box-shadow: 0 0 0 30px rgb(43, 43, 43) inset !important;
+    -webkit-box-shadow: 0 0 0 30px rgb(43, 43, 43) inset !important;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  .loginInputContainer {
+    background-color: rgb(43, 43, 43);
+    color: white;
+  }
+  input[type="reset"],
+  input[name="register"],
+  input[name="logout"],
+  input[name="clear-text"] {
     background-color: $input-button-reset-b;
   }
 
-  input[type="submit"] {
+  input[type="submit"],
+  input[name="login"] {
     background-color: $input-button-submit-b;
+  }
+  input[type="submit"]:disabled {
+    background-color: $input-button-noSubmit-b;
   }
   .modalMask {
     background-color: $modal-mask-b;
     .modal {
       background-color: $modal-background-b;
+    }
+    .toggleLogin {
+      color: $sub-title-b;
+    }
+    .emailCheckFail {
+      color: rgb(255, 182, 227);
     }
   }
   .headerContainer {
@@ -93,6 +122,7 @@
     }
   }
   .emptySvg {
+    
     .shadowColor {
       stop-color: $bottle-shadow-b;
     }
@@ -160,8 +190,12 @@
   .priorityHigh {
     background-color: $priority-high-b;
   }
-  input {
+  input,
+  .loginInputContainer {
     border-color: $input-border-b;
+  }
+  .signInWith {
+    border-top-color: $input-border-b;
   }
   .check {
     stroke: $check-stroke-b;
@@ -177,5 +211,20 @@
   .pencil {
     fill: $pencil-b;
     stroke: $pencil-b;
+  }
+  .iconColorFill {
+    fill: $icon-color-b;
+  }
+  .iconColorStroke {
+    stroke: $icon-color-b;
+  }
+  .iconColorUnstroke {
+    stroke: rgb(131, 131, 131);
+  }
+  .validColor {
+    color: $icon-color-b;
+  }
+  .invalidColor {
+    color: rgb(170, 170, 170);
   }
 }

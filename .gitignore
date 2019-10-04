@@ -1,5 +1,7 @@
+.env
 .DS_Store
 node_modules
+.VSCodeCounter
 /dist
 
 # local env files

@@ -2,7 +2,6 @@
   <table>
     <thead>
       <tr>
-        <!-- 'remain' and Limit have the same ordering, therefore the same filter -->
         <th
           v-for="(tableHeading, index) in tableHeadings"
           :key="index"
@@ -10,14 +9,14 @@
         >
           <div class="thContainer">
             <div>{{$t(tableHeading.text)}}</div>
-            <div class="triangle" :class="renderClass(tableHeading.renderClass)">&#9655;</div>
+            <div class="triangle" :class="renderClass(tableHeading.filter)">&#9655;</div>
           </div>
         </th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <Tr v-for="(todo, index) in todos" :todo="todo" :index="index" :key="index" />
+      <Tr v-for="(todo, index) in renderTodos" :todo="todo" :index="index" :key="index" />
     </tbody>
   </table>
 </template>
@@ -25,25 +24,26 @@
 <script>
 import Tr from "./Tr";
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "TaskTable",
   computed: {
-    ...mapState(["todos", "filterBy", "reverse"])
+    ...mapState(["filterBy", "reverse"]),
+    ...mapGetters(["renderTodos"])
   },
   components: {
     Tr
   },
   methods: {
     ...mapActions(["filterFunction"]),
-    handleFilter(text) {
-      this.filterFunction(text);
+    handleFilter(filter) {
+      this.filterFunction(filter);
     },
-    renderClass(text) {
-      if (this.filterBy[text] && this.reverse) {
+    renderClass(filter) {
+      if (this.filterBy[filter] && this.reverse) {
         return "reversed";
-      } else if (this.filterBy[text]) {
+      } else if (this.filterBy[filter]) {
         return "activate";
       }
       return "deactivate";
@@ -51,16 +51,13 @@ export default {
   },
   data() {
     return {
+      // 'remain' and Limit have the same ordering, therefore the same filter
       tableHeadings: [
-        { filter: "priority", text: "table.status", renderClass: "priority" },
-        {
-          filter: "category",
-          text: "table.titleCategory",
-          renderClass: "category"
-        },
-        { filter: "title", text: "table.titleName", renderClass: "title" },
-        { filter: "limit", text: "table.titleLimit", renderClass: "limit" },
-        { filter: "limit", text: "table.titleRemain", renderClass: "limit" }
+        { filter: "priority", text: "table.status" },
+        { filter: "category", text: "table.titleCategory" },
+        { filter: "title", text: "table.titleName" },
+        { filter: "limit", text: "table.titleLimit" },
+        { filter: "limit", text: "table.titleRemain" }
       ]
     };
   }

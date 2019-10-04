@@ -85,3 +85,56 @@ svg {
   stroke-miterlimit: 10;
   stroke-width: 0.5px;
 }
+.mail {
+  fill: none;
+  stroke-miterlimit: 10;
+}
+.lock {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+}
+.CircleCheckSVG {
+  margin-top: 1px;
+}
+.circle1,
+.circle2 {
+  fill: none;
+  stroke-width: 1.8px;
+}
+
+.circle1 {
+  stroke-miterlimit: 10;
+}
+
+.circle2 {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.delete1 {
+  fill: none;
+}
+
+.delete1,
+.delete2 {
+  stroke-miterlimit: 10;
+  stroke-width: 1.8px;
+}
+
+.delete2 {
+  fill: none;
+  stroke-linecap: round;
+}
+.eye1,
+.eye2 {
+  fill: none;
+  stroke-miterlimit: 10;
+}
+
+.eye1 {
+  stroke-width: 2px;
+}
+
+.eye2 {
+  stroke-linecap: round;
+}

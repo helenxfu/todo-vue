@@ -43,9 +43,28 @@ export default new VueI18n({
         inputContentsEdit: 'Edit title name here...',
         inputCategory: 'Enter category name...',
         inputCategoryEdit: 'Edit category name...',
-        buttonSubmit: 'submit',
-        buttonSubmitEdit: 'update',
-        buttonReset: 'reset',
+        buttonSubmit: 'Submit',
+        buttonSubmitEdit: 'Update',
+        buttonReset: 'Reset',
+        inputFilterText: 'Filter tasks here...',
+        buttonClearFilter: 'Clear Filter'
+      },
+      login: {
+        login: 'Login',
+        logout: 'Logout',
+        register: 'Register',
+        email: 'Email',
+        password: 'Password',
+        emailInput: 'Enter email address...',
+        passwordInput: 'Enter password...',
+        invalidEmail: ': Invalid email',
+        haveAccount: 'Already have an account?',
+        noAccount: 'Register if you do not have an account!',
+        signInWith: 'Sign in with',
+        forgetPassword: 'Forget password',
+        passwordLengthLimit: 'Length of 6~25 characters',
+        passwordTextType: 'Letters and numbers only\nMust contain both',
+        agree: 'By creating an account, you agree to our\nPrivacy Policy and Terms of Use'
       },
       countDown: {
         today: 'TODAY',
@@ -55,7 +74,8 @@ export default new VueI18n({
         none: 'Please add tasks from the form above.',
         passed: 'Overdue',
         completed: 'Completed',
-        confirm: 'Are you sure you want to delete all tasks?'
+        confirm: 'Are you sure you want to delete all tasks?',
+        mockWarn: 'Sample data only. To save your own data, register here.'
       },
     },
     ja: {
@@ -97,6 +117,25 @@ export default new VueI18n({
         buttonSubmit: '追加',
         buttonSubmitEdit: '変更',
         buttonReset: 'リセット',
+        inputFilterText: 'タスクをフィルターする',
+        buttonClearFilter: 'クリアする'
+      },
+      login: {
+        login: 'ログイン',
+        logout: 'ログアウト',
+        register: '登録',
+        email: 'メールアドレス',
+        password: 'パスワード',
+        emailInput: 'メールアドレス',
+        passwordInput: 'パスワード',
+        invalidEmail: ': メール形式無効',
+        haveAccount: 'アカウントを既にお持ちですか？',
+        noAccount: 'アカウントをお持ちでは無い方',
+        signInWith: 'または',
+        forgetPassword: 'パスワードをお忘れの方',
+        passwordLengthLimit: '6文字以上25文字以内',
+        passwordTextType: '半角英数字を含む',
+        agree: 'アカウントを登録することで個人情報保護方針と利用規約に同意したものとみなされます。'
       },
       countDown: {
         today: '今日',
@@ -106,7 +145,8 @@ export default new VueI18n({
         none: '上記フォームからタスクを入力してください',
         passed: '期限過ぎ',
         completed: '完',
-        confirm: '全タスクを削除してもよろしいですか？'
+        confirm: '全タスクを削除してもよろしいですか？',
+        mockWarn: 'サンプルデーター。データーを保存する場合、登録して下さい。'
       },
     },
     zh: {
@@ -148,6 +188,25 @@ export default new VueI18n({
         buttonSubmit: '追加',
         buttonSubmitEdit: '变更',
         buttonReset: '重置',
+        inputFilterText: '查看项目',
+        buttonClearFilter: '清除输入'
+      },
+      login: {
+        login: '登录',
+        logout: '退出',
+        register: '注册',
+        email: '邮件',
+        password: '密码',
+        emailInput: '输入邮件',
+        passwordInput: '输入密码',
+        invalidEmail: ': 邮件错误',
+        haveAccount: '已经有账号',
+        noAccount: '没有账号，请注册',
+        signInWith: '使用以下账号',
+        forgetPassword: '忘记密码',
+        passwordLengthLimit: '密码长度需要6到25',
+        passwordTextType: '需要英文字母和数字',
+        agree: '创建帐户即表示您同意我们的隐私政策和使用条款'
       },
       countDown: {
         today: '今天',
@@ -157,7 +216,8 @@ export default new VueI18n({
         none: '请追加项目',
         passed: '过期',
         completed: '完',
-        confirm: '确定要消除所有任务吗？'
+        confirm: '确定要消除所有任务吗？',
+        mockWarn: '显示模拟数据。想要用软件，请登入。'
       },
     },
   },

@@ -17,6 +17,7 @@ table {
     align-items: center;
   }
   .triangle {
+    @extend .noselect;
     font-size: 10px;
     padding: 4px;
     transition-duration: 0.5s;

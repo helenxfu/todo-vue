@@ -1,7 +1,7 @@
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 30px;
   border-bottom-style: solid;
   border-bottom-width: 2px;
@@ -13,10 +13,20 @@
   .btnContainer {
     margin: 3px;
     min-width: 139px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    .registerButtons {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
   .borderLeft {
     border-left-width: 1px;
     border-left-style: solid;
+  }
+  .marginLeft {
+    margin-left: 5px;
   }
   button {
     transition: color 0.5s;

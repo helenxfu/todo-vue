@@ -13,17 +13,37 @@
   .bodyContainer {
     background-color: $body-container-a;
   }
-  input[type="reset"] {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+  input[type="reset"],
+  input[name="register"],
+  input[name="logout"],
+  input[name="clear-text"] {
     background-color: $input-button-reset-a;
   }
 
-  input[type="submit"] {
+  input[type="submit"],
+  input[name="login"] {
     background-color: $input-button-submit-a;
+  }
+  input[type="submit"]:disabled {
+    background-color: $input-button-noSubmit-a;
   }
   .modalMask {
     background-color: $modal-mask-a;
     .modal {
       background-color: $modal-background-a;
+    }
+    .toggleLogin {
+      color: $sub-title-a;
+    }
+    .emailCheckFail {
+      color: crimson;
     }
   }
   .headerContainer {
@@ -70,9 +90,6 @@
         color: $menu-span-warn-a;
       }
     }
-    .socialLinks {
-      filter: invert(70%);
-    }
     svg {
       .shadowColor {
         stop-color: $bottle-shadow-a;
@@ -93,6 +110,10 @@
         stroke: $task-low-a;
       }
     }
+  }
+  .socialLinks,
+  .socialLoginContainer {
+    filter: invert(70%);
   }
   .emptySvg {
     .shadowColor {
@@ -163,8 +184,13 @@
   .priorityHigh {
     background-color: $priority-high-a;
   }
-  input {
+  input,
+  .loginInputContainer {
     border-color: $input-border-a;
+    background-color: white;
+  }
+  .signInWith {
+    border-top-color: $input-border-a;
   }
   .check {
     stroke: $check-stroke-a;
@@ -180,5 +206,20 @@
   .pencil {
     fill: $pencil-a;
     stroke: $pencil-a;
+  }
+  .iconColorFill {
+    fill: $icon-color-a;
+  }
+  .iconColorStroke {
+    stroke: $icon-color-a;
+  }
+  .iconColorUnstroke {
+    stroke: rgb(196, 196, 196);
+  }
+  .validColor {
+    color: rgb(179, 38, 197);
+  }
+  .invalidColor {
+    color: rgb(196, 196, 196);
   }
 }
