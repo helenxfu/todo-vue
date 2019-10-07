@@ -73,6 +73,7 @@
           >{{$t('login.passwordTextType')}}</p>
         </div>
         <p v-if="error" class="emailCheckFail errorMessage">{{error}}</p>
+        <!-- TODO: in the future -->
         <!-- <p v-if="!register" class="toggleLogin">{{$t('login.forgetPassword')}}</p> -->
         <input
           type="submit"
