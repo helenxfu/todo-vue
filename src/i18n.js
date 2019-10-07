@@ -64,7 +64,8 @@ export default new VueI18n({
         forgetPassword: 'Forget password',
         passwordLengthLimit: 'Length of 6~25 characters',
         passwordTextType: 'Letters and numbers only\nMust contain both',
-        agree: 'By creating an account, you agree to our\nPrivacy Policy and Terms of Use'
+        agree: 'By creating an account, you agree to our\nPrivacy Policy and Terms of Use',
+        setUsername: 'Set username'
       },
       countDown: {
         today: 'TODAY',
@@ -135,7 +136,8 @@ export default new VueI18n({
         forgetPassword: 'パスワードをお忘れの方',
         passwordLengthLimit: '6文字以上25文字以内',
         passwordTextType: '半角英数字を含む',
-        agree: 'アカウントを登録することで個人情報保護方針と利用規約に同意したものとみなされます。'
+        agree: 'アカウントを登録することで個人情報保護方針と利用規約に同意したものとみなされます。',
+        setUsername: 'ユーザーネームをセットする'
       },
       countDown: {
         today: '今日',
@@ -206,7 +208,8 @@ export default new VueI18n({
         forgetPassword: '忘记密码',
         passwordLengthLimit: '密码长度需要6到25',
         passwordTextType: '需要英文字母和数字',
-        agree: '创建帐户即表示您同意我们的隐私政策和使用条款'
+        agree: '创建帐户即表示您同意我们的隐私政策和使用条款',
+        setUsername: '设定用户名'
       },
       countDown: {
         today: '今天',

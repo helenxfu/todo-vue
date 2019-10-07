@@ -5,12 +5,13 @@
         v-if="editUsername"
         type="text"
         v-model="username"
+        :placeholder="$t('login.setUsername')"
         class="usernameInput"
         @blur="blurUsernameInput"
       />
       <h1 class="usernameContainer" @click="toggleEditUsername" v-else>
         <PencilSVGIcon class="pencilIcon" />
-        <span class="username">{{username}}</span>
+        <span class="username">{{!!username ? username : $t('login.setUsername') }}</span>
       </h1>
     </div>
     <h1 v-else>Task Tracker</h1>

@@ -23,18 +23,18 @@ export default {
   computed: {
     ...mapGetters(["theme"])
   },
-  created() {
+  async created() {
     this.$store.dispatch("todayRendered");
 
-    firebase.auth().onAuthStateChanged(user => {
+    await firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.$store.dispatch("setUid", user.uid);
-        firebase
+        const userRef = firebase
           .firestore()
           .collection("users")
-          .doc(user.uid)
-          .get()
-          .then(doc => {
+          .doc(user.uid);
+        userRef.get().then(doc => {
+          if (doc.exists) {
             const userData = {
               email: doc.data().email,
               username: doc.data().username,
@@ -42,12 +42,11 @@ export default {
               theme: doc.data().theme
             };
             this.$store.commit("setUserData", userData);
-          });
+          }
+        });
         const userTodos = [];
-        firebase
-          .firestore()
-          .collection("users")
-          .doc(user.uid)
+
+        userRef
           .collection("todos")
           .get()
           .then(todo => {

@@ -7,7 +7,6 @@ import "firebase/firestore";
 import "firebase/auth";
 
 Vue.use(Vuex);
-
 export default new Vuex.Store({
   state: {
     today: "", //renders today through todayRendered method on create App.vue to format today to the 0AM time and store the value here
@@ -190,6 +189,10 @@ export default new Vuex.Store({
     changeUsername({ commit, state }, payload) {
       firebase.firestore().collection("users").doc(state.user.uid).update({
         username: payload
+      }).catch(() => {
+        firebase.firestore().collection("users").doc(state.user.uid).set({
+          username: payload
+        })
       })
       commit('changeUsername', payload)
     },
@@ -310,6 +313,10 @@ export default new Vuex.Store({
       if (state.user.uid !== "") {
         firebase.firestore().collection("users").doc(state.user.uid).update({
           theme: payload
+        }).catch(() => {
+          firebase.firestore().collection("users").doc(state.user.uid).set({
+            theme: payload
+          })
         })
       }
       commit('setTheme', payload);
@@ -318,6 +325,10 @@ export default new Vuex.Store({
       if (state.user.uid !== "") {
         firebase.firestore().collection("users").doc(state.user.uid).update({
           lang: payload
+        }).catch(() => {
+          firebase.firestore().collection("users").doc(state.user.uid).set({
+            lang: payload
+          })
         })
       }
       commit('setLang', payload);
@@ -337,10 +348,12 @@ export default new Vuex.Store({
       state.user.uid = payload
     },
     setUserData(state, payload) {
-      i18n.locale = payload.lang;
+      if (payload.lang) {
+        i18n.locale = payload.lang;
+        state.user.lang = payload.lang
+      }
       state.user.email = payload.email
       state.user.username = payload.username
-      state.user.lang = payload.lang
       state.user.theme = payload.theme
     },
     clearUserData(state) {
