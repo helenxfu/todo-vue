@@ -20,11 +20,14 @@
         </button>
       </div>
     </td>
-    <EditModal :index="index" :todo="todo" :class="{hideMe : hidden}" @close="toggleModal" />
+    <BaseModal @close="toggleModal" :class="{hideMe : hidden}">
+      <EditModal :index="index" :todo="todo" @close="toggleModal" />
+    </BaseModal>
   </tr>
 </template>
 
 <script>
+import BaseModal from "./BaseModal";
 import EditModal from "./EditModal";
 import PencilSVGIcon from "./SVG/PencilSVGIcon";
 import CrossSVGIcon from "./SVG/CrossSVGIcon";
@@ -43,6 +46,7 @@ export default {
     }
   },
   components: {
+    BaseModal,
     EditModal,
     PencilSVGIcon,
     CrossSVGIcon,

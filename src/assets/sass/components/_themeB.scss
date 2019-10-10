@@ -45,7 +45,7 @@
   }
   .modalMask {
     background-color: $modal-mask-b;
-    .modal {
+    .modalContent {
       background-color: $modal-background-b;
     }
     .toggleLogin {
@@ -122,7 +122,6 @@
     }
   }
   .emptySvg {
-    
     .shadowColor {
       stop-color: $bottle-shadow-b;
     }

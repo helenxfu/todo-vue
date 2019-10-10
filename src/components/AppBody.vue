@@ -11,7 +11,9 @@
     <div v-else class="tableContainer">
       <TaskTable />
     </div>
-    <LoginSignUp :class="{hideMe : hidden}" @close="toggleModal" :registerProp="register" />
+    <BaseModal @close="toggleModal" :class="{hideMe : hidden}">
+      <LoginSignUp :registerProp="register" @close="toggleModal" />
+    </BaseModal>
   </div>
 </template>
 
@@ -23,6 +25,7 @@ import TaskTable from "./TaskTable";
 import Legend from "./Legend";
 import TextFilter from "./TextFilter";
 import MockDataWarn from "./MockDataWarn";
+import BaseModal from "./BaseModal";
 import LoginSignUp from "./LoginSignUp";
 import { mapGetters } from "vuex";
 
@@ -36,6 +39,7 @@ export default {
     Legend,
     TextFilter,
     MockDataWarn,
+    BaseModal,
     LoginSignUp
   },
   data() {

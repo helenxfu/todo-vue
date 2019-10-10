@@ -1,109 +1,109 @@
 <template>
-  <div class="modalMask" @click="$emit('close')">
-    <div class="modal" ref="modal" style="top: calc(50% - 267px)" @click.stop>
-      <div class="modalHeader">
-        <h2 v-if="register">{{$t('login.register')}}</h2>
-        <h2 v-else>{{$t('login.login')}}</h2>
-        <button @click="$emit('close')">
-          <CrossSVGIcon />
-        </button>
+  <div class="modalContent">
+    <BaseModal @close="toggleModal" :class="{hideMe : hidden}">
+      <ForgetPassword @close="toggleModal" />
+    </BaseModal>
+    <div class="modalHeader">
+      <h2 v-if="register">{{$t('login.register')}}</h2>
+      <h2 v-else>{{$t('login.login')}}</h2>
+      <button @click="$emit('close')">
+        <CrossSVGIcon />
+      </button>
+    </div>
+    <form @submit.prevent="submitUserInfo()">
+      <div>
+        <label>
+          {{$t('login.email')}}
+          <span
+            v-if="emailCheckWarn"
+            class="emailCheckFail"
+          >{{$t('login.invalidEmail')}}</span>
+        </label>
+        <br />
+        <div class="loginInputContainer">
+          <MailSVGIcon class="iconBlock iconMarginLeft" />
+          <input
+            type="email"
+            name="email"
+            autocomplete="off"
+            v-model="email"
+            :placeholder="$t('login.emailInput')"
+            @keyup="submitChecker()"
+            required
+          />
+        </div>
       </div>
-      <form @submit.prevent="submitUserInfo()">
-        <div>
-          <label>
-            {{$t('login.email')}}
-            <span
-              v-if="emailCheckWarn"
-              class="emailCheckFail"
-            >{{$t('login.invalidEmail')}}</span>
-          </label>
-          <br />
-          <div class="loginInputContainer">
-            <MailSVGIcon class="iconBlock iconMarginLeft" />
-            <input
-              type="email"
-              name="email"
-              autocomplete="off"
-              v-model="email"
-              :placeholder="$t('login.emailInput')"
-              @keyup="submitChecker()"
-              required
-            />
+      <div>
+        <label>{{$t('login.password')}}</label>
+        <br />
+        <div class="loginInputContainer">
+          <LockSVGIcon class="iconBlock iconMarginLeft" />
+          <input
+            :type="toggle"
+            name="password"
+            autocomplete="off"
+            v-model="password"
+            :placeholder="$t('login.passwordInput')"
+            @keyup="submitChecker()"
+            required
+          />
+          <div @click="clearInput">
+            <CircleXSVGIcon class="iconBlock iconMarginRight" />
+          </div>
+          <div @click="togglePasswordDisplay">
+            <EyeXSVGIcon class="iconBlock iconMarginRight" v-if="toggle === 'password'" />
+            <EyeSVGIcon class="iconBlock iconMarginRight" v-if="toggle === 'text'" />
           </div>
         </div>
-        <div>
-          <label>{{$t('login.password')}}</label>
-          <br />
-          <div class="loginInputContainer">
-            <LockSVGIcon class="iconBlock iconMarginLeft" />
-            <input
-              :type="toggle"
-              name="password"
-              autocomplete="off"
-              v-model="password"
-              :placeholder="$t('login.passwordInput')"
-              @keyup="submitChecker()"
-              required
-            />
-            <div @click="clearInput">
-              <CircleXSVGIcon class="iconBlock iconMarginRight" />
-            </div>
-            <div @click="togglePasswordDisplay">
-              <EyeXSVGIcon class="iconBlock iconMarginRight" v-if="toggle === 'password'" />
-              <EyeSVGIcon class="iconBlock iconMarginRight" v-if="toggle === 'text'" />
-            </div>
-          </div>
-        </div>
-        <div class="validationContainer">
-          <CircleCheckSVGIcon
-            class="CircleCheckSVG iconBlock iconMarginRight"
-            :check="passwordLength()"
-          />
-          <p
-            :class="passwordLength() ? 'validColor' : 'invalidColor'"
-          >{{$t('login.passwordLengthLimit')}}</p>
-        </div>
-        <div class="validationContainer spacingBottom">
-          <CircleCheckSVGIcon
-            class="CircleCheckSVG iconBlock iconMarginRight"
-            :check="validatePassword()"
-          />
-          <p
-            :class="validatePassword() ? 'validColor' : 'invalidColor'"
-          >{{$t('login.passwordTextType')}}</p>
-        </div>
-        <p v-if="error" class="emailCheckFail errorMessage">{{error}}</p>
-        <!-- TODO: in the future -->
-        <!-- <p v-if="!register" class="toggleLogin">{{$t('login.forgetPassword')}}</p> -->
-        <input
-          type="submit"
-          name="submitLoginRegister"
-          :value="register ? $t('login.register') : $t('login.login')"
-          :disabled="disabled"
+      </div>
+      <div class="validationContainer">
+        <CircleCheckSVGIcon
+          class="CircleCheckSVG iconBlock iconMarginRight"
+          :check="passwordLength()"
         />
-        <p v-if="register" class="agreement">{{$t('login.agree')}}</p>
         <p
-          class="toggleLogin"
-          @click="toggleLogin"
-        >{{register ? $t('login.haveAccount') : $t('login.noAccount')}}</p>
-      </form>
-      <h3 class="signInWith">{{$t('login.signInWith')}}</h3>
-      <div class="socialLoginContainer">
-        <button @click="signInTwitter">
-          <img
-            src="https://helenxfu.github.io/assets/socialLinks/twitter-white.png"
-            class="loginSocialIcon"
-            alt
-          />
-        </button>
-        <button @click="signInGithub">
-          <img
-            src="https://helenxfu.github.io/assets/socialLinks/github.png"
-            class="loginSocialIcon"
-            alt
-          />
-        </button>
+          :class="passwordLength() ? 'validColor' : 'invalidColor'"
+        >{{$t('login.passwordLengthLimit')}}</p>
       </div>
+      <div class="validationContainer spacingBottom">
+        <CircleCheckSVGIcon
+          class="CircleCheckSVG iconBlock iconMarginRight"
+          :check="validatePassword()"
+        />
+        <p
+          :class="validatePassword() ? 'validColor' : 'invalidColor'"
+        >{{$t('login.passwordTextType')}}</p>
+      </div>
+      <p v-if="error" class="emailCheckFail errorMessage">{{error}}</p>
+      <p v-if="!register" class="toggleLogin" @click="toggleModal">{{$t('login.forgetPassword')}}</p>
+      <input
+        type="submit"
+        name="submitLoginRegister"
+        :value="register ? $t('login.register') : $t('login.login')"
+        :disabled="disabled"
+      />
+      <p v-if="register" class="agreement">{{$t('login.agree')}}</p>
+      <p
+        class="toggleLogin"
+        @click="toggleLogin"
+      >{{register ? $t('login.haveAccount') : $t('login.noAccount')}}</p>
+    </form>
+    <h3 class="signInWith">{{$t('login.signInWith')}}</h3>
+    <div class="socialLoginContainer">
+      <button @click="signInTwitter">
+        <img
+          src="https://helenxfu.github.io/assets/socialLinks/twitter-white.png"
+          class="loginSocialIcon"
+          alt
+        />
+      </button>
+      <button @click="signInGithub">
+        <img
+          src="https://helenxfu.github.io/assets/socialLinks/github.png"
+          class="loginSocialIcon"
+          alt
+        />
+      </button>
     </div>
   </div>
 </template>
@@ -112,6 +112,9 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+
+import BaseModal from "./BaseModal";
+import ForgetPassword from "./ForgetPassword";
 
 import CrossSVGIcon from "./SVG/CrossSVGIcon";
 import CircleCheckSVGIcon from "./SVG/CircleCheckSVGIcon";
@@ -124,6 +127,8 @@ import MailSVGIcon from "./SVG/MailSVGIcon";
 export default {
   name: "LoginSignUp",
   components: {
+    BaseModal,
+    ForgetPassword,
     CrossSVGIcon,
     CircleCheckSVGIcon,
     CircleXSVGIcon,
@@ -140,6 +145,7 @@ export default {
   },
   data() {
     return {
+      hidden: true,
       register: false,
       email: "",
       password: "",
@@ -155,6 +161,9 @@ export default {
     }
   },
   methods: {
+    toggleModal() {
+      this.hidden = !this.hidden;
+    },
     clearInput() {
       this.password = "";
     },

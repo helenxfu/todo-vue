@@ -1,121 +1,125 @@
 .modalMask {
   position: fixed;
   z-index: 10;
-  left: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
   animation-name: modalOpen;
   animation-duration: 0.5s;
 
-  .modal {
+  .modalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .modalContent {
     border-radius: 10px;
-    margin: 0 auto;
     width: 300px;
     padding: 20px;
-    position: absolute;
-    left: calc(50% - 150px);
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.5);
     animation-name: modalScale;
     animation-duration: 0.5s;
-  }
-  .modalHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  h2 {
-    font-size: 20px;
-  }
-  button {
-    padding: 0;
-    margin: 0;
-    &:hover {
-      filter: none;
-      background-color: transparent;
-    }
-  }
-  form > div {
-    margin-top: 15px;
-  }
-  label {
-    font-size: 14px;
-  }
 
-  input[type="date"] {
-    padding: 7.5px;
-    width: 100%;
-  }
-  .btnContainer {
-    display: flex;
-  }
-  input[type="submit"],
-  input[type="reset"],
-  input[type="text"] {
-    height: 37px;
-    font-size: 14px;
-    width: 100%;
-  }
-  input[type="submit"]:disabled {
-    cursor: initial;
-    &:hover {
-      filter: none;
+    .modalHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
     }
-  }
-  input[name="submitLoginRegister"] {
-    margin-top: 10px;
-  }
-  .toggleLogin {
-    font-size: 12px;
-    text-align: center;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  .signInWith {
-    border-top-width: 1px;
-    border-top-style: solid;
-    padding-top: 15px;
-    font-size: 13px;
-    text-align: center;
-    margin: 15px 0 5px;
-  }
-  .emailCheckFail {
-    font-size: 12px;
-  }
-  .errorMessage {
-    font-size: 10px;
-    text-align: center;
-    margin-top: 10px;
-  }
-  .agreement {
-    font-size: 10px;
-    text-align: center;
-    white-space: pre-wrap;
-  }
+    h2 {
+      font-size: 20px;
+    }
+    button {
+      padding: 0;
+      margin: 0;
+      &:hover {
+        filter: none;
+        background-color: transparent;
+      }
+    }
+    form > div {
+      margin-top: 15px;
+    }
+    label {
+      font-size: 14px;
+    }
 
-  .validationContainer {
-    white-space: pre-wrap;
-    margin-left: 15px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-  }
+    input[type="date"] {
+      padding: 7.5px;
+      width: 100%;
+    }
+    .btnContainer {
+      display: flex;
+    }
+    input[type="submit"],
+    input[type="reset"],
+    input[type="text"] {
+      height: 37px;
+      font-size: 14px;
+      width: 100%;
+    }
+    input[type="submit"]:disabled {
+      cursor: initial;
+      &:hover {
+        filter: none;
+      }
+    }
+    input[name="submitLoginRegister"] {
+      margin-top: 10px;
+    }
+    .toggleLogin {
+      font-size: 12px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .signInWith {
+      border-top-width: 1px;
+      border-top-style: solid;
+      padding-top: 15px;
+      font-size: 13px;
+      text-align: center;
+      margin: 15px 0 5px;
+    }
+    .emailCheckFail {
+      font-size: 12px;
+    }
+    .errorMessage {
+      font-size: 10px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .agreement {
+      font-size: 10px;
+      text-align: center;
+      white-space: pre-wrap;
+    }
 
-  @keyframes modalOpen {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
+    .validationContainer {
+      white-space: pre-wrap;
+      margin-left: 15px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
     }
   }
-  @keyframes modalScale {
-    from {
-      transform: scale(0.7);
-    }
-    to {
-      transform: scale(1);
-    }
+}
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalScale {
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: scale(1);
   }
 }

@@ -12,6 +12,7 @@ import "firebase/auth";
 
 import Menu from "./components/Menu.vue";
 import AppBody from "./components/AppBody.vue";
+
 import { mapGetters } from "vuex";
 
 export default {
