@@ -48,7 +48,8 @@
     .modalContent {
       background-color: $modal-background-b;
     }
-    .toggleLogin {
+    .toggleLogin,
+    .deleteInfo {
       color: $sub-title-b;
     }
     .emailCheckFail {

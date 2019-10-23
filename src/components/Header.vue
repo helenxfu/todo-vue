@@ -36,6 +36,14 @@
         <input
           class="marginLeft"
           type="button"
+          name="userSettings"
+          value="Settings"
+          @click="toggleModal"
+          v-if="isLoggedIn"
+        />
+        <input
+          class="marginLeft"
+          type="button"
           name="logout"
           :value="$t('login.logout')"
           @click="logout"
@@ -48,11 +56,17 @@
         <button class="borderLeft" @click="switchLang('zh')">中文</button>
       </div>
     </div>
+    <BaseModal @close="toggleModal" :class="{hideMe : hidden}">
+      <UserSetting @close="toggleModal" />
+    </BaseModal>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import BaseModal from "./BaseModal";
+import UserSetting from "./UserSetting";
+
 import PencilSVGIcon from "./SVG/PencilSVGIcon";
 
 import firebase from "firebase/app";
@@ -62,12 +76,15 @@ import "firebase/auth";
 export default {
   name: "Header",
   components: {
+    BaseModal,
+    UserSetting,
     PencilSVGIcon
   },
   data() {
     return {
       editUsername: false,
-      username: ""
+      username: "",
+      hidden: true
     };
   },
   computed: {
@@ -93,6 +110,9 @@ export default {
         // eslint-disable-next-line no-console
         console.log("logout error", e);
       }
+    },
+    toggleModal() {
+      this.hidden = !this.hidden;
     }
   },
   watch: {

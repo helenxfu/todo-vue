@@ -61,11 +61,19 @@ export default new VueI18n({
         haveAccount: 'Already have an account?',
         noAccount: 'Register if you do not have an account!',
         signInWith: 'Sign in with',
-        forgetPassword: 'Forget password',
         passwordLengthLimit: 'Length of 6~25 characters',
         passwordTextType: 'Letters and numbers only\nMust contain both',
-        agree: 'By creating an account, you agree to our\nPrivacy Policy and Terms of Use',
-        setUsername: 'Set username'
+        agree: 'By creating an account, you agree to our\nPrivacy Policy and Terms of Use.',
+        setUsername: 'Set username',
+        forgetPassword: 'Forget password',
+        forgetPasswordMsg: 'Enter your email address\n and we will send you a password reset link.',
+        forgetPasswordBtn: 'Request Reset Link'
+      },
+      userSetting: {
+        userSetting: 'User Settings',
+        username: 'Username',
+        deleteTodo: 'Delete Todos',
+        deleteAccount: 'Delete Account'
       },
       countDown: {
         today: 'TODAY',
@@ -133,11 +141,19 @@ export default new VueI18n({
         haveAccount: 'アカウントを既にお持ちですか？',
         noAccount: 'アカウントをお持ちでは無い方',
         signInWith: 'または',
-        forgetPassword: 'パスワードをお忘れの方',
         passwordLengthLimit: '6文字以上25文字以内',
         passwordTextType: '半角英数字を含む',
         agree: 'アカウントを登録することで個人情報保護方針と利用規約に同意したものとみなされます。',
-        setUsername: 'ユーザーネームをセットする'
+        setUsername: 'ユーザーネームをセットする',
+        forgetPassword: 'パスワードをお忘れの方',
+        forgetPasswordMsg: 'パスワードリセットリンクを\nメールにお送りいたします。',
+        forgetPasswordBtn: 'パスワードリセット'
+      },
+      userSetting: {
+        userSetting: 'ユーザー設定',
+        username: 'ユーザーネーム',
+        deleteTodo: 'タスク削除',
+        deleteAccount: 'アカウント削除'
       },
       countDown: {
         today: '今日',
@@ -205,11 +221,19 @@ export default new VueI18n({
         haveAccount: '已经有账号',
         noAccount: '没有账号，请注册',
         signInWith: '使用以下账号',
-        forgetPassword: '忘记密码',
         passwordLengthLimit: '密码长度需要6到25',
         passwordTextType: '需要英文字母和数字',
         agree: '创建帐户即表示您同意我们的隐私政策和使用条款',
-        setUsername: '设定用户名'
+        setUsername: '设定用户名',
+        forgetPassword: '忘记密码',
+        forgetPasswordMsg: '输入邮箱来发送密码重置电子邮件',
+        forgetPasswordBtn: '重设密码'
+      },
+      userSetting: {
+        userSetting: '用户设定',
+        username: '用户名',
+        deleteTodo: '消除所有任务',
+        deleteAccount: '消除用户'
       },
       countDown: {
         today: '今天',

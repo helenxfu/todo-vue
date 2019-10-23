@@ -11,67 +11,24 @@
       </button>
     </div>
     <form @submit.prevent="submitUserInfo()">
-      <div>
-        <label>
-          {{$t('login.email')}}
-          <span
-            v-if="emailCheckWarn"
-            class="emailCheckFail"
-          >{{$t('login.invalidEmail')}}</span>
-        </label>
-        <br />
-        <div class="loginInputContainer">
-          <MailSVGIcon class="iconBlock iconMarginLeft" />
-          <input
-            type="email"
-            name="email"
-            autocomplete="off"
-            v-model="email"
-            :placeholder="$t('login.emailInput')"
-            @keyup="submitChecker()"
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <label>{{$t('login.password')}}</label>
-        <br />
-        <div class="loginInputContainer">
-          <LockSVGIcon class="iconBlock iconMarginLeft" />
-          <input
-            :type="toggle"
-            name="password"
-            autocomplete="off"
-            v-model="password"
-            :placeholder="$t('login.passwordInput')"
-            @keyup="submitChecker()"
-            required
-          />
-          <div @click="clearInput">
-            <CircleXSVGIcon class="iconBlock iconMarginRight" />
-          </div>
-          <div @click="togglePasswordDisplay">
-            <EyeXSVGIcon class="iconBlock iconMarginRight" v-if="toggle === 'password'" />
-            <EyeSVGIcon class="iconBlock iconMarginRight" v-if="toggle === 'text'" />
-          </div>
-        </div>
-      </div>
+      <InputEmail @emitEmail="handleEmitEmail" />
+      <InputPassword @emitPassword="handleEmitPassword" />
       <div class="validationContainer">
         <CircleCheckSVGIcon
           class="CircleCheckSVG iconBlock iconMarginRight"
-          :check="passwordLength()"
+          :check="passwordLengthValidation"
         />
         <p
-          :class="passwordLength() ? 'validColor' : 'invalidColor'"
+          :class="passwordLengthValidation ? 'validColor' : 'invalidColor'"
         >{{$t('login.passwordLengthLimit')}}</p>
       </div>
       <div class="validationContainer spacingBottom">
         <CircleCheckSVGIcon
           class="CircleCheckSVG iconBlock iconMarginRight"
-          :check="validatePassword()"
+          :check="passwordTextValidation"
         />
         <p
-          :class="validatePassword() ? 'validColor' : 'invalidColor'"
+          :class="passwordTextValidation ? 'validColor' : 'invalidColor'"
         >{{$t('login.passwordTextType')}}</p>
       </div>
       <p v-if="error" class="emailCheckFail errorMessage">{{error}}</p>
@@ -80,7 +37,7 @@
         type="submit"
         name="submitLoginRegister"
         :value="register ? $t('login.register') : $t('login.login')"
-        :disabled="disabled"
+        :disabled="!submitChecker"
       />
       <p v-if="register" class="agreement">{{$t('login.agree')}}</p>
       <p
@@ -115,27 +72,21 @@ import "firebase/auth";
 
 import BaseModal from "./BaseModal";
 import ForgetPassword from "./ForgetPassword";
+import InputEmail from "./InputEmail";
+import InputPassword from "./InputPassword";
 
 import CrossSVGIcon from "./SVG/CrossSVGIcon";
 import CircleCheckSVGIcon from "./SVG/CircleCheckSVGIcon";
-import CircleXSVGIcon from "./SVG/CircleXSVGIcon";
-import EyeSVGIcon from "./SVG/EyeSVGIcon";
-import EyeXSVGIcon from "./SVG/EyeXSVGIcon";
-import LockSVGIcon from "./SVG/LockSVGIcon";
-import MailSVGIcon from "./SVG/MailSVGIcon";
 
 export default {
   name: "LoginSignUp",
   components: {
     BaseModal,
     ForgetPassword,
+    InputEmail,
+    InputPassword,
     CrossSVGIcon,
-    CircleCheckSVGIcon,
-    CircleXSVGIcon,
-    EyeSVGIcon,
-    EyeXSVGIcon,
-    LockSVGIcon,
-    MailSVGIcon
+    CircleCheckSVGIcon
   },
   props: {
     registerProp: {
@@ -148,10 +99,10 @@ export default {
       hidden: true,
       register: false,
       email: "",
+      emailValidation: false,
       password: "",
-      emailCheckWarn: false,
-      toggle: "password",
-      disabled: true,
+      passwordTextValidation: false,
+      passwordLengthValidation: false,
       error: ""
     };
   },
@@ -160,47 +111,30 @@ export default {
       this.register = this.registerProp;
     }
   },
+  computed: {
+    submitChecker() {
+      return (
+        this.passwordTextValidation &&
+        this.emailValidation &&
+        this.passwordLengthValidation
+      );
+    }
+  },
   methods: {
     toggleModal() {
       this.hidden = !this.hidden;
     },
-    clearInput() {
-      this.password = "";
-    },
     toggleLogin() {
       this.register = !this.register;
     },
-    togglePasswordDisplay() {
-      if (this.toggle === "password") {
-        this.toggle = "text";
-      } else {
-        this.toggle = "password";
-      }
+    handleEmitEmail(payload) {
+      this.email = payload.email;
+      this.emailValidation = payload.emailValidation;
     },
-    validatePassword() {
-      const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{2,}$/;
-      const text = this.password;
-      return regex.test(text);
-    },
-    passwordLength() {
-      return this.password.length >= 6 && this.password.length <= 25;
-    },
-    validateEmail() {
-      // RFC 2822 email validation
-      // eslint-disable-next-line no-control-regex
-      const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-      const text = this.email.trim();
-      const result = regex.test(text);
-      // disallow spacing, foreign text, full-width alphabet
-      const regex2 = /^[\w@.!#$%&’'"<>*+/=?^`{|}~-]{2,}$/;
-      const result2 = regex2.test(text);
-      this.emailCheckWarn = !result || !result2;
-      return result && result2;
-    },
-    submitChecker() {
-      this.validateEmail() && this.passwordLength() && this.validatePassword()
-        ? (this.disabled = false)
-        : (this.disabled = true);
+    handleEmitPassword(payload) {
+      this.password = payload.password;
+      this.passwordTextValidation = payload.passwordTextValidation;
+      this.passwordLengthValidation = payload.passwordLengthValidation;
     },
     submitUserInfo() {
       if (this.register) {

@@ -24,8 +24,9 @@
       <div></div>
     </div>
     <h4>{{$t('menu.titleTasks')}}</h4>
-    <button @click="deleteCompleted()" :disabled="todoCompleted === 0">{{$t('menu.delComp')}}</button>
-    <button @click="deleteAll()" :disabled="todoLength === 0">{{$t('menu.deleteAll')}}</button>
+    <button @click="deleteCompleted" :disabled="todoCompleted === 0">{{$t('menu.delComp')}}</button>
+    <!-- @click="toggleModal" -->
+    <button @click="deleteAll" :disabled="todoLength === 0">{{$t('menu.deleteAll')}}</button>
     <div>
       <h4>{{$t('menu.titleTheme')}}</h4>
       <button @click="setTheme('classic')">{{$t('menu.modeClassic')}}</button>
@@ -50,23 +51,39 @@
       </div>
     </div>
     <p class="credit">&#169; Starcloud</p>
+    <BaseModal @close="toggleModal" :class="{hideMe : hidden}">
+      <YesNoModal @close="toggleModal" />
+    </BaseModal>
   </div>
 </template>
 
 <script>
+import BaseModal from "./BaseModal";
+import YesNoModal from "./YesNoModal";
+
 import BottleSVGIcon from "./SVG/BottleSVGIcon";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Menu",
   components: {
+    BaseModal,
+    YesNoModal,
     BottleSVGIcon
+  },
+  data() {
+    return {
+      hidden: true
+    };
   },
   computed: {
     ...mapGetters(["todoLength", "todoCompleted", "completionRate", "overdue"])
   },
   methods: {
-    ...mapActions(["deleteAll", "deleteCompleted", "setTheme"])
+    ...mapActions(["deleteAll", "deleteCompleted", "setTheme"]),
+    toggleModal() {
+      this.hidden = !this.hidden;
+    }
   }
 };
 </script>
