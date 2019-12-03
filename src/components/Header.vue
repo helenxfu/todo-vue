@@ -36,8 +36,8 @@
         <input
           class="marginLeft"
           type="button"
-          name="userSettings"
-          value="Settings"
+          name="userSetting"
+          :value="$t('userSetting.settingBtn')"
           @click="toggleModal"
           v-if="isLoggedIn"
         />

@@ -30,7 +30,7 @@
       </div>
     </div>
     <div>
-      <p class="deleteInfo" @click="deleteUser">{{$t('userSetting.deleteTodo')}}</p>
+      <p class="deleteInfo" @click="deleteTodo">{{$t('userSetting.deleteTodo')}}</p>
       <p class="deleteInfo" @click="deleteUser">{{$t('userSetting.deleteAccount')}}</p>
     </div>
     <BaseModal @close="toggleModal" :class="{hideMe : hidden}">
@@ -40,6 +40,10 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+
 import BaseModal from "./BaseModal";
 import Test from "./Test";
 import CrossSVGIcon from "./SVG/CrossSVGIcon";
@@ -63,16 +67,18 @@ export default {
       this.hidden = !this.hidden;
     },
     deleteUser() {
-      console.log("action");
-      // firebase
-      //   .auth()
-      //   .currentUser.delete()
-      //   .then(()=> {
-      //     // User deleted.
-      //   })
-      //   .catch(error=> {
-      //     // An error happened.
-      //   });
+      firebase
+        .auth()
+        .currentUser.delete()
+        .then(() => {
+          // User deleted.
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    deleteTodo() {
+      console.log("delete todos");
     }
   }
 };

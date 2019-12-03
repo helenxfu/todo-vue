@@ -36,17 +36,20 @@
 
     <div class="linksContainer">
       <div class="socialLinks">
-        <a href="https://helenxfu.github.io/">
-          <img src="https://helenxfu.github.io/assets/socialLinks/mail.png" alt />
+        <a href="https://facebook.com/helenxfu/">
+          <img src="https://helenxfu.github.io/assets/socialLinks/facebook.png" alt />
         </a>
-        <a href="https://twitter.com/HelenStarcloud">
+        <a href="https://twitter.com/HelenStarcloud/">
           <img src="https://helenxfu.github.io/assets/socialLinks/twitter-white.png" alt />
         </a>
-        <a href="https://www.linkedin.com/in/helenxfu">
+        <a href="https://www.linkedin.com/in/helenxfu/">
           <img src="https://helenxfu.github.io/assets/socialLinks/linkedIn.png" alt />
         </a>
-        <a href="https://github.com/helenxfu">
+        <a href="https://github.com/helenxfu/">
           <img src="https://helenxfu.github.io/assets/socialLinks/github.png" alt />
+        </a>
+        <a href="https://helenxfu.github.io/">
+          <img src="https://helenxfu.github.io/assets/socialLinks/clearstarcloud.png" alt />
         </a>
       </div>
     </div>

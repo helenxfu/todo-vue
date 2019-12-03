@@ -70,6 +70,7 @@ export default new VueI18n({
         forgetPasswordBtn: 'Request Reset Link'
       },
       userSetting: {
+        settingBtn: 'Settings',
         userSetting: 'User Settings',
         username: 'Username',
         deleteTodo: 'Delete Todos',
@@ -150,6 +151,7 @@ export default new VueI18n({
         forgetPasswordBtn: 'パスワードリセット'
       },
       userSetting: {
+        settingBtn: '設定',
         userSetting: 'ユーザー設定',
         username: 'ユーザーネーム',
         deleteTodo: 'タスク削除',
@@ -230,6 +232,7 @@ export default new VueI18n({
         forgetPasswordBtn: '重设密码'
       },
       userSetting: {
+        settingBtn: '设定',
         userSetting: '用户设定',
         username: '用户名',
         deleteTodo: '消除所有任务',

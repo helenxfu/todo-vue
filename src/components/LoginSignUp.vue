@@ -54,6 +54,13 @@
           alt
         />
       </button>
+      <button @click="signInFacebook">
+        <img
+          src="https://helenxfu.github.io/assets/socialLinks/facebook.png"
+          class="loginSocialIcon"
+          alt
+        />
+      </button>
       <button @click="signInGithub">
         <img
           src="https://helenxfu.github.io/assets/socialLinks/github.png"
@@ -223,6 +230,37 @@ export default {
             if (!snapshot.exists) {
               const userData = {
                 email: "github",
+                username: cred.user.displayName,
+                lang: this.$store.state.user.lang,
+                theme: this.$store.state.user.theme
+              };
+              userRef.set(userData);
+            }
+          });
+        })
+        .then(() => {
+          this.email = "";
+          this.password = "";
+          this.$emit("close");
+        })
+        .catch(error => {
+          this.error = error.message;
+        });
+    },
+    signInFacebook() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(cred => {
+          const userRef = firebase
+            .firestore()
+            .collection("users")
+            .doc(cred.user.uid);
+          userRef.get().then(snapshot => {
+            if (!snapshot.exists) {
+              const userData = {
+                email: "facebook",
                 username: cred.user.displayName,
                 lang: this.$store.state.user.lang,
                 theme: this.$store.state.user.theme
